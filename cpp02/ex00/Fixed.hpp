@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:21:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/22 02:54:40 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/23 23:03:53 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ public:
     // Destructor
     ~Fixed();
 
-    int getValue() const;
 	int getRawBits() const;
 	int setRawBits() const;
     Fixed operator=(const Fixed& other) const;

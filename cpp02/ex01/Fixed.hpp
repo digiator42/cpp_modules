@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:21:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/22 04:36:34 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/23 23:23:39 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ public:
     // Destructor
     ~Fixed();
 
-    int getValue() const;
 	int getRawBits() const;
 	void setRawBits(const int raw);
     float toFloat(void) const;

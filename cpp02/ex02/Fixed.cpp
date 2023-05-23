@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:06:48 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/22 18:56:07 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/23 23:35:23 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ Fixed& Fixed::operator=(const Fixed& other) {
         value = other.value;
 	// std::cout << "Copy assignment operator called" << std::endl;
     return *this;
-}
-// Destructor
-int Fixed::getValue(void) const {
-    return value;
 }
 int Fixed::getRawBits(void) const {
 	// std::cout << "getRawBits member function called" << std::endl;
@@ -103,16 +99,16 @@ Fixed Fixed::operator/(const Fixed& other){
 }
 
 Fixed& Fixed::min(Fixed& a, Fixed& b) {
-    return (a.getValue() < b.getValue()) ? a : b;
+    return (a.getRawBits() < b.getRawBits()) ? a : b;
 }
 const Fixed& Fixed::min(const Fixed& a, const Fixed& b) {
-    return (a.getValue() < b.getValue()) ? a : b;
+    return (a.getRawBits() < b.getRawBits()) ? a : b;
 }
 Fixed& Fixed::max(Fixed& a, Fixed& b) {
-    return (a.getValue() > b.getValue()) ? a : b;
+    return (a.getRawBits() > b.getRawBits()) ? a : b;
 }
 const Fixed& Fixed::max(const Fixed& a, const Fixed& b) {
-    return (a.getValue() > b.getValue()) ? a : b;
+    return (a.getRawBits() > b.getRawBits()) ? a : b;
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fp){
