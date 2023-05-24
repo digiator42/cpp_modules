@@ -15,8 +15,9 @@
 
 int main() {
 
-	ScavTrap b("NEW");
-	ScavTrap c(b);
-	c.guardGate();
-	c.attack("nnn");
+    ScavTrap scav("shawrma");
+    scav.attack("potato");
+    scav.takeDamage(0);
+    scav.beRepaired(100);
+    scav.guardGate();
 }
