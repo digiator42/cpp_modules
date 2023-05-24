@@ -6,21 +6,21 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:06:48 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/23 01:58:38 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/24 22:51:20 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap() : hitPoints(0), energyPoints(0), attackDamage(0)
+ClapTrap::ClapTrap() : hitPoints(10), energyPoints(10), attackDamage(0)
 {
     _name = "NULL";
 	std::cout << "ClapTrap Default constructor called" << std::endl;
 }
 
 // Parameterized constructor
-ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), attackDamage(10)
+ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), attackDamage(0)
 {
     _name = name;
 	std::cout << "ClapTrap Parameterized constructor called" << std::endl;
@@ -88,5 +88,5 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 ClapTrap::~ClapTrap() 
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap Destructor called" << std::endl;
 }

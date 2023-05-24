@@ -6,26 +6,25 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 01:52:45 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/24 03:27:54 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/24 22:57:59 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 // Default constructor
-ScavTrap::ScavTrap() {
+ScavTrap::ScavTrap() : ClapTrap() {
 	std::cout << "ScavTrap Default constructor called" << std::endl;
 }
 // Parameterized constructor
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name){
 	std::cout << "ScavTrap Parameterized constructor called" << std::endl;
-	_name = name;
 	hitPoints = 100;
     energyPoints = 50;
     attackDamage = 20;
 }
 // Copy constructor
-ScavTrap::ScavTrap(const ScavTrap& other) {
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
 	std::cout << "ScavTrap Copy constructor called" << std::endl;
 }
 // Copy assignment operator
