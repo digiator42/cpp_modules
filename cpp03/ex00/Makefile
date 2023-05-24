@@ -15,6 +15,9 @@ $(NAME): $(OBJS)
 	$(CPP) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
+	$(RM) $(OBJS)
+
+fclean:
 	$(RM) $(NAME) $(OBJS)
 
 re: clean all

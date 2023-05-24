@@ -2,6 +2,7 @@ NAME = ClapTrap
 
 SRCS = 	ClapTrap.cpp \
 		ScavTrap.cpp \
+		FragTrap.cpp \
 		main.cpp	\
 
 CPP = c++
