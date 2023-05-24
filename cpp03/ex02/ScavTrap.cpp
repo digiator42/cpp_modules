@@ -14,11 +14,11 @@
 
 // Default constructor
 ScavTrap::ScavTrap() {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ScavTrap Default constructor called" << std::endl;
 }
 // Parameterized constructor
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name){
-	std::cout << "Parameterized constructor called" << std::endl;
+	std::cout << "ScavTrap Parameterized constructor called" << std::endl;
 	_name = name;
 	hitPoints = 100;
     energyPoints = 50;
@@ -26,22 +26,24 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name){
 }
 // Copy constructor
 ScavTrap::ScavTrap(const ScavTrap& other) {
-	_name = other._name;
-    hitPoints = other.hitPoints;
-    energyPoints = other.energyPoints;
-    attackDamage = other.attackDamage;
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ScavTrap Copy constructor called" << std::endl;
 }
 // Copy assignment operator
-ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
-	std::cout << "Copy constructor called" << std::endl;
+ScavTrap& ScavTrap::operator=(const ScavTrap& other) 
+{
+	std::cout << "ScavTrap Copy assignment constructor called" << std::endl;
 	if(this != &other)
+	{
 		_name = other._name;
-	std::cout << "Copy assignment operator called" << std::endl;
+		hitPoints = other.hitPoints;
+		energyPoints = other.energyPoints;
+		attackDamage = other.attackDamage;
+	}
     return *this;	
 }
 
-void ScavTrap::guardGate() {
+void ScavTrap::guardGate() 
+{
 	std::cout << PURPLE << "ScavTrap is now in Gate keeper mode" << RESET << std::endl;
 }
 void ScavTrap::attack(const std::string & target)
@@ -52,7 +54,10 @@ void ScavTrap::attack(const std::string & target)
         return ;
     }
     std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
-    energyPoints -= 1;
+    energyPoints--;
 }
 // Destructor
-ScavTrap::~ScavTrap() {}
+ScavTrap::~ScavTrap() 
+{
+   	std::cout << "ScavTrap Destructor called" << std::endl;
+}

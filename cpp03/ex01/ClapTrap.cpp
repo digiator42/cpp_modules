@@ -61,7 +61,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
         << hitPoints << " hit points.\n";
 }
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (energyPoints <= 0)
+    if (!energyPoints)
 	{
 		std::cout << "ClapTrap " << _name << " has no energy left to repair itself" << std::endl;
 		return;
@@ -72,5 +72,5 @@ void ClapTrap::beRepaired(unsigned int amount) {
         << hitPoints << " hit points.\n";
 }
 ClapTrap::~ClapTrap() {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap Destructor called" << std::endl;
 }

@@ -15,8 +15,11 @@
 
 int main() {
 
-    ScavTrap scav("shawrma");
-    scav.attack("potato");
+    ScavTrap scav("Shawrma");
+    ScavTrap scav2("Shish Tawook");
+    ScavTrap scavy(scav);
+    scavy.attack("Potato");
+    scav.attack("Potato");
     scav.takeDamage(0);
     scav.beRepaired(100);
     scav.guardGate();

@@ -23,15 +23,17 @@ ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), a
 }
 // Copy constructor
 ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name) {
-    hitPoints = other.hitPoints;
-    energyPoints = other.energyPoints;
-    attackDamage = other.attackDamage;
 	std::cout << "Copy constructor called" << std::endl;
 }
 // Copy assignment operator
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
     if(this != &other)
+    {
         _name = other._name;
+        hitPoints = other.hitPoints;
+        energyPoints = other.energyPoints;
+        attackDamage = other.attackDamage;
+    }
 	std::cout << "Copy assignment operator called" << std::endl;
     return *this;
 }
@@ -40,15 +42,14 @@ void ClapTrap::attack(const std::string& target) {
         std::cout << "Clap trap " << _name << " has no points to attack " << target << std::endl;
         return;
    }
-   attackDamage ? attackDamage-- : attackDamage;
    std::cout <<  "Clap trap " << _name << " attacks " << target << ", causing " << attackDamage 
         << " points of damage!" <<std::endl;
-   hitPoints ? hitPoints-- : hitPoints;
    energyPoints ? energyPoints-- : energyPoints;
 }
 void ClapTrap::takeDamage(unsigned int amount) {
     if (hitPoints <= amount)
 	{
+        hitPoints = 0;
 		std::cout << "ClapTrap " << _name << " has been taking a significant damage and died :(" 
             <<std::endl;
 		return;
@@ -58,16 +59,16 @@ void ClapTrap::takeDamage(unsigned int amount) {
         << hitPoints << " hit points.\n";
 }
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (energyPoints <= 0)
+    if (!energyPoints)
 	{
 		std::cout << "ClapTrap " << _name << " has no energy left to repair itself" << std::endl;
 		return;
 	}
-	energyPoints -= 1;
+	energyPoints--;
 	hitPoints += amount;
 	std::cout << "ClapTrap " << _name << " repaired " << amount << " points, and now has "
         << hitPoints << " hit points.\n";
 }
 ClapTrap::~ClapTrap() {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap Destructor called" << std::endl;
 }

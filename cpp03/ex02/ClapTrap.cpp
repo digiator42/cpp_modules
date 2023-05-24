@@ -16,22 +16,19 @@
 ClapTrap::ClapTrap() : hitPoints(0), energyPoints(0), attackDamage(0)
 {
     _name = "NULL";
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap Default constructor called" << std::endl;
 }
 
 // Parameterized constructor
 ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), attackDamage(10)
 {
     _name = name;
-	std::cout << "Parameterized constructor called" << std::endl;
+	std::cout << "ClapTrap Parameterized constructor called" << std::endl;
 }
 
 // Copy constructor
 ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name) 
 {
-    hitPoints = other.hitPoints;
-    energyPoints = other.energyPoints;
-    attackDamage = other.attackDamage;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -39,8 +36,13 @@ ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name)
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
     if(this != &other)
+    {
         _name = other._name;
-	std::cout << "Copy assignment operator called" << std::endl;
+        hitPoints = other.hitPoints;
+        energyPoints = other.energyPoints;
+        attackDamage = other.attackDamage;
+    }
+	std::cout << "ClapTrap Copy assignment operator called" << std::endl;
     return *this;
 }
 
@@ -61,6 +63,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
     if (hitPoints <= amount)
 	{
+        hitPoints = 0;
 		std::cout << "ClapTrap " << _name << " has been taking a significant damage and died :(" 
             <<std::endl;
 		return;
@@ -72,7 +75,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount) 
 {
-    if (energyPoints <= 0)
+    if (!energyPoints)
 	{
 		std::cout << "ClapTrap " << _name << " has no energy left to repair itself" << std::endl;
 		return;

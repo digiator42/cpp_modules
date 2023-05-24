@@ -17,7 +17,7 @@ ScavTrap::ScavTrap() {
 	std::cout << "ScavTrap Default constructor called" << std::endl;
 }
 // Parameterized constructor
-ScavTrap::ScavTrap(const std::string &name)  : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap Parameterized constructor called" << std::endl;
 	_name = name;
@@ -28,7 +28,6 @@ ScavTrap::ScavTrap(const std::string &name)  : ClapTrap(name)
 // Copy constructor
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
-	*this = other;
 	std::cout << "ScavTrap Copy constructor called" << std::endl;
 }
 // Copy assignment operator
@@ -60,4 +59,7 @@ void ScavTrap::attack(const std::string & target)
     energyPoints--;
 }
 // Destructor
-ScavTrap::~ScavTrap() {}
+ScavTrap::~ScavTrap() 
+{
+	std::cout << "ScavTrap Destructor called" << std::endl;
+}
