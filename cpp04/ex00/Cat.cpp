@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:02 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 06:23:28 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/25 06:35:49 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ Cat::Cat() {
     std::cout << "Cat constructor called" << std::endl;
 }
 
-Cat::Cat(const std::string &name) {
+Cat::Cat(const std::string &name) : Animal(name) {
 
 }
-Cat::Cat(const Cat &other) {
+Cat::Cat(const Cat &other) : Animal(other) {
     
 }
 Cat& Cat::operator=(const Cat &other) {
-
+     if(this != &other)
+        type = other.type;
+    return *this;
 }
 
 Cat::~Cat() {

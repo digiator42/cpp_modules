@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 06:23:43 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/25 06:36:48 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ Dog::Dog() {
     std::cout << "Dog constructor called" << std::endl;
 }
 
-Dog::Dog(const std::string &name) {
+Dog::Dog(const std::string &name) : Animal(name) {
 
 }
-Dog::Dog(const Dog &other) {
+Dog::Dog(const Dog &other) : Animal(other) {
     
 }
 Dog& Dog::operator=(const Dog &other) {
-
+     if(this != &other)
+        type = other.type;
+    return *this;
 }
 
 Dog::~Dog() {

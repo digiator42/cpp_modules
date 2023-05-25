@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:18 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 06:24:26 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/25 06:38:50 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ WrongCat::WrongCat() {
     std::cout << "WrongCat constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(const std::string &name) {
+WrongCat::WrongCat(const std::string &name) : WrongAnimal(name) {
 
 }
-WrongCat::WrongCat(const WrongCat &other) {
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) {
     
 }
 WrongCat& WrongCat::operator=(const WrongCat &other) {
-
+     if(this != &other)
+        type = other.type;
+    return *this;
 }
 
 WrongCat::~WrongCat() {
