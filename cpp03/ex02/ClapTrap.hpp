@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:21:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/24 04:35:32 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/25 21:25:53 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ class ClapTrap {
 	
 protected:
     std::string _name;
-    unsigned int hitPoints;
-    unsigned int energyPoints;
-    unsigned int attackDamage;
+    int hitPoints;
+    int energyPoints;
+    int attackDamage;
 
 public:
     // Default constructor

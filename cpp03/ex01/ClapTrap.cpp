@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:06:48 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 19:52:29 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/26 00:45:55 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), a
 	std::cout << "ClapTrap Parameterized constructor called" << std::endl;
 }
 // Copy constructor
-ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name) {
+ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name) , hitPoints(other.hitPoints), energyPoints(other.energyPoints), attackDamage(other.attackDamage){
 	std::cout << "ClapTrap Copy constructor called" << std::endl;
 }
 // Copy assignment operator

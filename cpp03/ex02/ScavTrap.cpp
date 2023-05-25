@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 01:52:45 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/24 22:57:59 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/26 00:48:35 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 // Default constructor
 ScavTrap::ScavTrap() : ClapTrap() {
+	hitPoints = 100;
+    energyPoints = 50;
+    attackDamage = 20;
 	std::cout << "ScavTrap Default constructor called" << std::endl;
 }
 // Parameterized constructor
@@ -43,7 +46,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 
 void ScavTrap::guardGate() 
 {
-	std::cout << PURPLE << "ScavTrap is now in Gate keeper mode" << RESET << std::endl;
+	std::cout <<"ScavTrap is now in Gate keeper mode" << std::endl;
 }
 void ScavTrap::attack(const std::string & target)
 {

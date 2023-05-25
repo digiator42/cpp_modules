@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:06:48 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/24 22:51:20 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/26 00:46:53 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Default constructor
 ClapTrap::ClapTrap() : hitPoints(10), energyPoints(10), attackDamage(0)
 {
-    _name = "NULL";
+    _name = "NO NAME";
 	std::cout << "ClapTrap Default constructor called" << std::endl;
 }
 
@@ -27,9 +27,9 @@ ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), a
 }
 
 // Copy constructor
-ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name) 
+ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name), hitPoints(other.hitPoints), energyPoints(other.energyPoints), attackDamage(other.attackDamage)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
@@ -61,7 +61,7 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount) 
 {
-    if (hitPoints <= amount)
+    if (hitPoints <= (int)amount)
 	{
         hitPoints = 0;
 		std::cout << "ClapTrap " << _name << " has been taking a significant damage and died :(" 
@@ -80,7 +80,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << _name << " has no energy left to repair itself" << std::endl;
 		return;
 	}
-	energyPoints--;
+    energyPoints ? energyPoints-- : energyPoints;
 	hitPoints += amount;
 	std::cout << "ClapTrap " << _name << " repaired " << amount << " points, and now has "
         << hitPoints << " hit points.\n";

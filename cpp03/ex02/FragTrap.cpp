@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 02:42:44 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/24 18:50:19 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/25 20:09:58 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 FragTrap::FragTrap() : ClapTrap()
 {
     std::cout << "FragTrap constructor called" << std::endl;
-    _name = "NULL";
+    _name = "NO NAME";
 	hitPoints = 100;
     energyPoints = 100;
     attackDamage = 30;
@@ -24,6 +24,9 @@ FragTrap::FragTrap() : ClapTrap()
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 {
     std::cout << "FragTrap Parameterized constructor called" << std::endl;
+    hitPoints = 100;
+    energyPoints = 100;
+    attackDamage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap & other) : ClapTrap(other)
@@ -57,7 +60,7 @@ void FragTrap::attack(const std::string &target)
         return ;
     }
     std::cout << "FragTrap " << _name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
-    energyPoints--;
+    energyPoints ? energyPoints-- : energyPoints;
 }
 void FragTrap::highFivesGuys(void)
 {
