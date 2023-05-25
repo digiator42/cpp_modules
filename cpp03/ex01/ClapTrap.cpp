@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:06:48 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/23 01:58:38 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/25 19:52:29 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Default constructor
 ClapTrap::ClapTrap() : hitPoints(10), energyPoints(10), attackDamage(0){
-    _name = "NULL";
+    _name = "NO NAME";
 	std::cout << "ScavTrap Default constructor called" << std::endl;
 }
 // Parameterized constructor
@@ -23,9 +23,8 @@ ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), a
 	std::cout << "ClapTrap Parameterized constructor called" << std::endl;
 }
 // Copy constructor
-ClapTrap::ClapTrap(const ClapTrap& other) {
+ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name) {
 	std::cout << "ClapTrap Copy constructor called" << std::endl;
-    *this = other;
 }
 // Copy assignment operator
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
@@ -40,7 +39,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
     return *this;
 }
 void ClapTrap::attack(const std::string& target) {
-   if(!hitPoints && !energyPoints){
+   if(!hitPoints || !energyPoints){
         std::cout << "Clap trap " << _name << " has no points to attack " << target << std::endl;
         return;
    }
@@ -66,7 +65,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << "ClapTrap " << _name << " has no energy left to repair itself" << std::endl;
 		return;
 	}
-	energyPoints--;
+	energyPoints ? energyPoints-- : energyPoints;
 	hitPoints += amount;
 	std::cout << "ClapTrap " << _name << " repaired " << amount << " points, and now has "
         << hitPoints << " hit points.\n";

@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:06:48 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/23 00:07:36 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/25 19:55:10 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 // Default constructor
 ClapTrap::ClapTrap() : hitPoints(0), energyPoints(0), attackDamage(0){
-    _name = "NULL";
-	std::cout << "Default constructor called" << std::endl;
+    _name = "NO NAME";
+	std::cout << "ClapTrap Default constructor called" << std::endl;
 }
 // Parameterized constructor
-ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), attackDamage(10){
+ClapTrap::ClapTrap(const std::string &name) : hitPoints(10), energyPoints(10), attackDamage(0){
+	std::cout << "ClapTrap Parameterized constructor called" << std::endl;
     _name = name;
 }
 // Copy constructor
 ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name) {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 }
 // Copy assignment operator
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
@@ -34,15 +35,15 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
         energyPoints = other.energyPoints;
         attackDamage = other.attackDamage;
     }
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "ClapTrap Copy assignment operator called" << std::endl;
     return *this;
 }
 void ClapTrap::attack(const std::string& target) {
-   if(!hitPoints && !energyPoints){
+   if(!hitPoints || !energyPoints){
         std::cout << "Clap trap " << _name << " has no points to attack " << target << std::endl;
         return;
    }
-   std::cout <<  "Clap trap " << _name << " attacks " << target << ", causing " << attackDamage 
+   std::cout <<  "Clap trap " << _name << " attacks " << target << ", causing " << ++attackDamage 
         << " points of damage!" <<std::endl;
    energyPoints ? energyPoints-- : energyPoints;
 }
@@ -64,7 +65,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << "ClapTrap " << _name << " has no energy left to repair itself" << std::endl;
 		return;
 	}
-	energyPoints--;
+	energyPoints ? energyPoints-- : energyPoints;
 	hitPoints += amount;
 	std::cout << "ClapTrap " << _name << " repaired " << amount << " points, and now has "
         << hitPoints << " hit points.\n";
