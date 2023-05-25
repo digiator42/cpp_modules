@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 00:25:14 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 01:43:25 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:21 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:19:26 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-int main() {
+#include "WrongAnimal.hpp"
 
-	ScavTrap b;
-	ClapTrap v("CLAP TRAP");
-	b.takeDamage(2);
-	v.takeDamage(2);
-	b.attack("OLD");
-	v.attack("OLD");
-	// ScavTrap c(b);
-	// c.guardGate();
-	// c.attack("nnn");
-	// FragTrap f("fds");
-	// f.attack("neahah");
-	// f.highFivesGuys();
-	// f.takeDamage(2);
-}
+class WrongCat : public WrongAnimal {
+public:
+    WrongCat();
+    WrongCat(const std::string &name);
+    WrongCat(const WrongCat &other);
+    WrongCat &operator=(const WrongCat &other);
+    ~WrongCat();
+
+    void makeSound() const;
+};
+
+#endif

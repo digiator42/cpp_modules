@@ -5,27 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 00:25:14 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 01:43:25 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:11 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:00:10 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main() {
+    Animal animal;
+    animal.makeSound();
 
-	ScavTrap b;
-	ClapTrap v("CLAP TRAP");
-	b.takeDamage(2);
-	v.takeDamage(2);
-	b.attack("OLD");
-	v.attack("OLD");
-	// ScavTrap c(b);
-	// c.guardGate();
-	// c.attack("nnn");
-	// FragTrap f("fds");
-	// f.attack("neahah");
-	// f.highFivesGuys();
-	// f.takeDamage(2);
+    std::cout << "---------------------" << std::endl;
+
+    Dog dog;
+    dog.makeSound();
+
+    std::cout << "---------------------" << std::endl;
+
+    Cat cat;
+    cat.makeSound();
+
+    std::cout << "---------------------" << std::endl;
+
+    WrongAnimal wrongAnimal;
+    wrongAnimal.makeSound();
+
+    std::cout << "---------------------" << std::endl;
+
+    WrongCat wrongCat;
+    wrongCat.makeSound();
+
+    return 0;
 }

@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 00:25:14 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 01:43:25 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:02 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:23:28 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "Cat.hpp"
+#include <iostream>
 
-int main() {
+Cat::Cat() {
+    type = "Cat";
+    std::cout << "Cat constructor called" << std::endl;
+}
 
-	ScavTrap b;
-	ClapTrap v("CLAP TRAP");
-	b.takeDamage(2);
-	v.takeDamage(2);
-	b.attack("OLD");
-	v.attack("OLD");
-	// ScavTrap c(b);
-	// c.guardGate();
-	// c.attack("nnn");
-	// FragTrap f("fds");
-	// f.attack("neahah");
-	// f.highFivesGuys();
-	// f.takeDamage(2);
+Cat::Cat(const std::string &name) {
+
+}
+Cat::Cat(const Cat &other) {
+    
+}
+Cat& Cat::operator=(const Cat &other) {
+
+}
+
+Cat::~Cat() {
+    std::cout << "Cat destructor called" << std::endl;
+}
+
+void Cat::makeSound() const {
+    std::cout << "Cat meows" << std::endl;
 }

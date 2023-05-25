@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 00:25:14 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 01:43:25 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:15 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:19:19 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-int main() {
+#include <string>
 
-	ScavTrap b;
-	ClapTrap v("CLAP TRAP");
-	b.takeDamage(2);
-	v.takeDamage(2);
-	b.attack("OLD");
-	v.attack("OLD");
-	// ScavTrap c(b);
-	// c.guardGate();
-	// c.attack("nnn");
-	// FragTrap f("fds");
-	// f.attack("neahah");
-	// f.highFivesGuys();
-	// f.takeDamage(2);
-}
+class WrongAnimal {
+protected:
+    std::string type;
+
+public:
+    WrongAnimal();
+    WrongAnimal(const std::string &name);
+    WrongAnimal(const WrongAnimal &other);
+    WrongAnimal &operator=(const WrongAnimal &other);
+    virtual ~WrongAnimal();
+
+    void makeSound() const;
+};
+
+#endif

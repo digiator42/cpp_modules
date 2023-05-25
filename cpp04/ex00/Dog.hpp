@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 00:25:14 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 01:43:25 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:08 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:19:10 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#ifndef DOG_HPP
+#define DOG_HPP
 
-int main() {
+#include "Animal.hpp"
 
-	ScavTrap b;
-	ClapTrap v("CLAP TRAP");
-	b.takeDamage(2);
-	v.takeDamage(2);
-	b.attack("OLD");
-	v.attack("OLD");
-	// ScavTrap c(b);
-	// c.guardGate();
-	// c.attack("nnn");
-	// FragTrap f("fds");
-	// f.attack("neahah");
-	// f.highFivesGuys();
-	// f.takeDamage(2);
-}
+class Dog : public Animal {
+public:
+    Dog();
+    Dog(const std::string &name);
+    Dog(const Dog &other);
+    Dog &operator=(const Dog &other);
+    ~Dog();
+
+    void makeSound() const;
+};
+
+#endif

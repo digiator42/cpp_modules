@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 00:25:14 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 01:43:25 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:06 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:23:43 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "Dog.hpp"
+#include <iostream>
 
-int main() {
+Dog::Dog() {
+    type = "Dog";
+    std::cout << "Dog constructor called" << std::endl;
+}
 
-	ScavTrap b;
-	ClapTrap v("CLAP TRAP");
-	b.takeDamage(2);
-	v.takeDamage(2);
-	b.attack("OLD");
-	v.attack("OLD");
-	// ScavTrap c(b);
-	// c.guardGate();
-	// c.attack("nnn");
-	// FragTrap f("fds");
-	// f.attack("neahah");
-	// f.highFivesGuys();
-	// f.takeDamage(2);
+Dog::Dog(const std::string &name) {
+
+}
+Dog::Dog(const Dog &other) {
+    
+}
+Dog& Dog::operator=(const Dog &other) {
+
+}
+
+Dog::~Dog() {
+    std::cout << "Dog destructor called" << std::endl;
+}
+
+void Dog::makeSound() const {
+    std::cout << "Dog barks" << std::endl;
 }
