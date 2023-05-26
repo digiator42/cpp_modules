@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:25:14 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 00:46:00 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/26 20:13:02 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 int main() {
 
 	ClapTrap v("CLAP TRAP");
-	ScavTrap b;
+	ScavTrap b("NEW NAME");
 	b.takeDamage(2);
-	b.attack("dasda");
+	b.attack("Victime");
 	v.takeDamage(2);
 	v.beRepaired(3);
 	b.attack("OLD");
@@ -26,8 +26,8 @@ int main() {
 	ScavTrap c(b);
 	c.guardGate();
 	c.attack("nnn");
-	FragTrap f("fds");
-	f.attack("neahah");
+	FragTrap f("Frag");
+	f.attack("NEW_FRAG");
 	f.highFivesGuys();
 	f.takeDamage(2);
 }
