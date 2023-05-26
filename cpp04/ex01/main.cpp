@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 05:56:04 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 02:39:36 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:11 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/26 06:05:55 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
-
 #include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
-class Cat : public Animal {
-public:
-    Cat();
-    Cat(const std::string &name);
-    Cat(const Cat &other);
-    Cat &operator=(const Cat &other);
-    ~Cat();
+int main() {
 
-    void makeSound() const;
-};
+    Brain brain;
+    Cat cat;
+    cat.makeSound();
+    
+    Dog dog;
+    dog.makeSound();
 
-#endif
+
+    return 0;
+}

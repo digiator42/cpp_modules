@@ -6,11 +6,9 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:21:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 21:25:53 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/26 03:11:17 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma once
 
 #ifndef CLAP_TRAP_H
 # define CLAP_TRAP_H
@@ -21,9 +19,9 @@ class ClapTrap {
 	
 protected:
     std::string _name;
-    int hitPoints;
-    int energyPoints;
-    int attackDamage;
+    unsigned int hitPoints;
+    unsigned int energyPoints;
+    unsigned int attackDamage;
 
 public:
     // Default constructor

@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 05:56:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 02:39:39 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:13 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:38:16 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongAnimal.hpp"
 #include <iostream>
 
-Dog::Dog() {
-    type = "Dog";
-    std::cout << "Dog constructor called" << std::endl;
+WrongAnimal::WrongAnimal() {
+    std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
-Dog::Dog(const std::string &name) : Animal(name) {
+WrongAnimal::WrongAnimal(const std::string &name) : type(name) {
 
 }
-Dog::Dog(const Dog &other) : Animal(other) {
+WrongAnimal::WrongAnimal(const WrongAnimal &other) : type(other.type) {
     
 }
-Dog& Dog::operator=(const Dog &other) {
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal &other) {
      if(this != &other)
         type = other.type;
     return *this;
 }
 
-Dog::~Dog() {
-    std::cout << "Dog destructor called" << std::endl;
+WrongAnimal::~WrongAnimal() {
+    std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
-void Dog::makeSound() const {
-    std::cout << "Dog barks" << std::endl;
+void WrongAnimal::makeSound() const {
+    std::cout << "WrongAnimal makes a sound" << std::endl;
 }

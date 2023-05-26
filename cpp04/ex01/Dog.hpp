@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 05:56:04 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 02:39:36 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:08 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/26 05:32:45 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
-class Cat : public Animal {
+class Dog : public Animal {
+private:
+    Brain *brain;    
 public:
-    Cat();
-    Cat(const std::string &name);
-    Cat(const Cat &other);
-    Cat &operator=(const Cat &other);
-    ~Cat();
+    Dog();
+    Dog(const std::string &name);
+    Dog(const Dog &other);
+    Dog &operator=(const Dog &other);
+    ~Dog();
 
     void makeSound() const;
 };

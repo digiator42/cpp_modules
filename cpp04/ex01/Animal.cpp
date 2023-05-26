@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 05:56:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 02:39:39 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:55:57 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:33:51 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Animal.hpp"
 #include <iostream>
 
-Dog::Dog() {
-    type = "Dog";
-    std::cout << "Dog constructor called" << std::endl;
+Animal::Animal() {
+    std::cout << "Animal constructor called" << std::endl;
 }
 
-Dog::Dog(const std::string &name) : Animal(name) {
+Animal::Animal(const std::string &name) : type(name) {
 
 }
-Dog::Dog(const Dog &other) : Animal(other) {
+Animal::Animal(const Animal &other) : type(other.type) {
     
 }
-Dog& Dog::operator=(const Dog &other) {
+Animal& Animal::operator=(const Animal &other) {
      if(this != &other)
         type = other.type;
     return *this;
 }
 
-Dog::~Dog() {
-    std::cout << "Dog destructor called" << std::endl;
+Animal::~Animal() {
+    std::cout << "Animal destructor called" << std::endl;
 }
 
-void Dog::makeSound() const {
-    std::cout << "Dog barks" << std::endl;
+void Animal::makeSound() const {
+    std::cout << "Animal makes a sound" << std::endl;
 }

@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 05:56:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 02:39:39 by ahassan          ###   ########.fr       */
+/*   Created: 2023/05/25 05:56:18 by ahassan           #+#    #+#             */
+/*   Updated: 2023/05/25 06:38:50 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
-Dog::Dog() {
-    type = "Dog";
-    std::cout << "Dog constructor called" << std::endl;
+WrongCat::WrongCat() {
+    type = "WrongCat";
+    std::cout << "WrongCat constructor called" << std::endl;
 }
 
-Dog::Dog(const std::string &name) : Animal(name) {
+WrongCat::WrongCat(const std::string &name) : WrongAnimal(name) {
 
 }
-Dog::Dog(const Dog &other) : Animal(other) {
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) {
     
 }
-Dog& Dog::operator=(const Dog &other) {
+WrongCat& WrongCat::operator=(const WrongCat &other) {
      if(this != &other)
         type = other.type;
     return *this;
 }
 
-Dog::~Dog() {
-    std::cout << "Dog destructor called" << std::endl;
+WrongCat::~WrongCat() {
+    std::cout << "WrongCat destructor called" << std::endl;
 }
 
-void Dog::makeSound() const {
-    std::cout << "Dog barks" << std::endl;
+void WrongCat::makeSound() const {
+    std::cout << "WrongCat makes a sound like a WrongAnimal" << std::endl;
 }
