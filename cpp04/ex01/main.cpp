@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:11 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 06:05:55 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/27 20:19:33 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,36 @@
 #include "WrongCat.hpp"
 
 int main() {
-
-    Brain brain;
-    Cat cat;
-    cat.makeSound();
+    /*-----Basic testing------*/
     
-    Dog dog;
-    dog.makeSound();
-
-
+    // Dog dog("Wolf");
+    // Dog dog2(dog);
+    // dog.makeSound();
+    // dog2.makeSound();
+    // std::cout << "-----------------\n";
+    // Cat cat("Wolf");
+    // Cat cat2(cat);
+    // cat.makeSound();
+    // cat2.makeSound();
+    // std::cout << "-----------------\n";
+    // cat2 = cat;
+    // cat.makeSound();
+    // cat2.makeSound();
+    // std::cout << "-----------------\n";
+    
+    Animal *animal[] = {
+        new Dog("Wolf"),
+        new Dog("Wolf"),
+        new Dog("Wolf"),
+        new Dog("Wolf"),
+        new Cat("Miaw"),
+        new Cat("Miaw"),
+        new Cat("Miaw"),
+        new Cat("Miaw"),
+    };
+    for (int i = 0; i < 8; i++)
+        animal[i]->makeSound();
+    for (int i = 0; i < 8; i++)
+        delete animal[i];
     return 0;
 }
