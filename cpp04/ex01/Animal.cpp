@@ -6,18 +6,19 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:55:57 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 06:33:51 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/27 19:05:02 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal() {
+Animal::Animal() : type("Animal") {
     std::cout << "Animal constructor called" << std::endl;
 }
 
 Animal::Animal(const std::string &name) : type(name) {
+    std::cout << "Animal Para constructor called" << std::endl;
 
 }
 Animal::Animal(const Animal &other) : type(other.type) {

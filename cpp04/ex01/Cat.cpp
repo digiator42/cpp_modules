@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:02 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 05:58:03 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/27 19:25:08 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ Cat::Cat() : brain(new Brain()) {
 }
 
 Cat::Cat(const std::string &name) : Animal(name) {
-
+    std::cout << "Dog constructor called" << std::endl;
+    brain = new Brain();
 }
 Cat::Cat(const Cat &other) : Animal(other) {
-    
+    std::cout << "Cat copy constructor called" << std::endl;
+    brain = new Brain();
 }
 Cat& Cat::operator=(const Cat &other) {
     if(this != &other)
@@ -43,5 +45,5 @@ Cat::~Cat() {
 }
 
 void Cat::makeSound() const {
-    std::cout << "Cat meows" << std::endl;
+    std::cout << type << " meows" << std::endl;
 }

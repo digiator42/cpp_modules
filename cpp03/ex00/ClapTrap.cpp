@@ -6,14 +6,14 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 00:06:48 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 00:45:49 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/26 20:34:27 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap() : hitPoints(0), energyPoints(0), attackDamage(0){
+ClapTrap::ClapTrap() : hitPoints(10), energyPoints(10), attackDamage(0){
     _name = "NO NAME";
 	std::cout << "ClapTrap Default constructor called" << std::endl;
 }
