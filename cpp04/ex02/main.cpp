@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:11 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/27 20:28:24 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/27 20:29:02 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main() {
     // cat.makeSound();
     // cat2.makeSound();
     // std::cout << "-----------------\n";
+    // Animal a; // error 'Animal' is an abstract class
     Animal *animal[] = {
         new Dog("Wolf"),
         new Dog("Wolf"),
