@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:11 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/27 20:28:24 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 18:36:21 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,23 @@ int main() {
         new Cat("Miaw"),
         new Cat("Miaw"),
     };
+    // copy_Dog = animal[1];
     for (int i = 0; i < 8; i++)
         animal[i]->makeSound();
     for (int i = 0; i < 8; i++)
         delete animal[i];
+    
+    {
+        Dog green("wolf");
+        Dog Blue(green);
+        Dog red;
+
+        green.setIdea(0, "I am a wolf");
+        std::cout << green.getIdea(0);
+        std::cout << red.getIdea(0);
+        std::cout << Blue.getIdea(0);
+        red = green;
+        std::cout << red.getIdea(0);
+    }
     return 0;
 }

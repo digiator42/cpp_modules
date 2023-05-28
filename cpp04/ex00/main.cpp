@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:11 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 18:11:37 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 18:44:22 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int main() {
     i->makeSound(); //will output the cat sound!
     j->makeSound();
     meta->makeSound();
+
+    delete j;//should not create a leak
+    delete i;
+    delete meta;
+
     const WrongAnimal* wrong_cat = new WrongCat();
 	const WrongAnimal* wrong_animal = new WrongAnimal();
 

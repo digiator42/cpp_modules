@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:55:57 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 17:50:36 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 18:40:12 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,3 @@ std::string Animal::getType() const{
     return this->type;
 }
 
-void Animal::makeSound() const {
-    std::cout << "Animal makes a sound" << std::endl;
-}
