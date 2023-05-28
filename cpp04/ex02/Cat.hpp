@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:04 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 04:56:26 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 05:00:01 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ public:
     ~Cat();
     std::string getIdea(int index) const;
     void setIdea(int index, const std::string& idea);
-
     void makeSound() const;
 };
 

@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:11 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 04:58:52 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 05:03:45 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ int main() {
     std::cout << cat.getIdea(99);
     std::cout << cat.getIdea(300);
     std::cout << cat.getIdea(-1);
+    Dog dog;
+    dog.setIdea(0, "I am thinking to Bark as well");
+    dog.setIdea(1, "Should i Bark");
+    dog.setIdea(2, "Yeah, he is");
+    dog.setIdea(3, "You Miaw, I Baaaaaaaark");
+    std::cout << dog.getIdea(3);
+    std::cout << dog.getIdea(99);
+    std::cout << dog.getIdea(300);
+    std::cout << dog.getIdea(-1);
 
     return 0;
 }
