@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 05:14:26 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 04:32:40 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 04:58:26 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 Brain::Brain()
 {
 	std::cout << "Brain constructor called" << std::endl;
+	setIdeas(100);
 }
 
 Brain::Brain(const Brain &copy)
@@ -46,6 +47,11 @@ void Brain::setIdea(int index, const std::string& idea) {
 		return ;	
 	}
     std::cout << "Exception: Invalid Index\n";
+}
+
+void Brain::setIdeas(int ideas){
+    for(int i = 0; i < ideas ;i++)
+		this->ideas[i] = "";
 }
 
 Brain::~Brain()

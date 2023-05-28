@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:11 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 04:44:30 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 04:58:52 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,20 @@ int main() {
 
     
     // Animal a; // error 'Animal' is an abstract class
-    // Animal *animal[] = {
-    //     new Dog("Wolf"),
-    //     new Dog("Wolf"),
-    //     new Dog("Wolf"),
-    //     new Dog("Wolf"),
-    //     new Cat("Miaw"),
-    //     new Cat("Miaw"),
-    //     new Cat("Miaw"),
-    //     new Cat("Miaw"),
-    // };
-    // for (int i = 0; i < 8; i++)
-    //     animal[i]->makeSound();
-    // for (int i = 0; i < 8; i++)
-    //     delete animal[i];
+    Animal *animal[] = {
+        new Dog("Wolf"),
+        new Dog("Wolf"),
+        new Dog("Wolf"),
+        new Dog("Wolf"),
+        new Cat("Miaw"),
+        new Cat("Miaw"),
+        new Cat("Miaw"),
+        new Cat("Miaw"),
+    };
+    for (int i = 0; i < 8; i++)
+        animal[i]->makeSound();
+    for (int i = 0; i < 8; i++)
+        delete animal[i];
 
     /*testing brain getters && setters*/
     Cat cat;
@@ -61,5 +61,6 @@ int main() {
     std::cout << cat.getIdea(99);
     std::cout << cat.getIdea(300);
     std::cout << cat.getIdea(-1);
+
     return 0;
 }

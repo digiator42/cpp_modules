@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 05:14:37 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 04:02:31 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 04:56:43 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	~Brain();
 	std::string getIdea(int index) const;
     void setIdea(int index, const std::string& idea);
+	void setIdeas(int ideas);
 };
 
 #endif
