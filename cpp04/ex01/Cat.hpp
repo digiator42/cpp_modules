@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:04 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 05:31:14 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 05:25:53 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ public:
     Cat(const Cat &other);
     Cat &operator=(const Cat &other);
     ~Cat();
-
+    std::string getType() const;
+    std::string getIdea(int index) const;
+    void setIdea(int index, const std::string& idea);
     void makeSound() const;
 };
 

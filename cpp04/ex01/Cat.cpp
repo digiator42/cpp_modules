@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:02 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 03:06:18 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 05:26:05 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ Cat& Cat::operator=(const Cat &other) {
         this->brain = new Brain(*other.brain);
     }
     return *this;
+}
+
+std::string Cat::getType() const {
+    return type;
+}
+
+std::string Cat::getIdea(int index) const {
+    return brain->getIdea(index);
+}
+
+void Cat::setIdea(int index, const std::string& idea){
+    brain->setIdea(index, idea);
 }
 
 Cat::~Cat() {

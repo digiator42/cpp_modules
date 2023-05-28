@@ -6,15 +6,17 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 05:14:26 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/27 19:36:33 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 04:58:26 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
 
-Brain::Brain() 
+
+Brain::Brain()
 {
 	std::cout << "Brain constructor called" << std::endl;
+	setIdeas(100);
 }
 
 Brain::Brain(const Brain &copy)
@@ -31,6 +33,25 @@ Brain& Brain::operator=(const Brain &other)
 			this->ideas[i] = other.ideas[i];
 	}
 	return *this;
+}
+
+std::string Brain::getIdea(int index) const {
+    if (index >= 0 && index < 100)
+		return ideas[index] + "\n";
+		
+	return "Exception: Invalid Index\n";
+}
+void Brain::setIdea(int index, const std::string& idea) {
+    if (index >= 0 && index < 100){
+        ideas[index] = idea;
+		return ;	
+	}
+    std::cout << "Exception: Invalid Index\n";
+}
+
+void Brain::setIdeas(int ideas){
+    for(int i = 0; i < ideas ;i++)
+		this->ideas[i] = "";
 }
 
 Brain::~Brain()

@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:08 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 05:00:03 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 05:25:44 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
     Dog(const Dog &other);
     Dog &operator=(const Dog &other);
     ~Dog();
+    std::string getType() const;
     std::string getIdea(int index) const;
     void setIdea(int index, const std::string& idea);
     void makeSound() const;

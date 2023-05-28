@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/28 05:01:27 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 05:26:00 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ Dog& Dog::operator=(const Dog &other) {
       this->brain = new Brain(*other.brain);
     }
     return *this;
+}
+
+std::string Dog::getType() const {
+    return type;
 }
 
 std::string Dog::getIdea(int index) const {
