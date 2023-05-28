@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:06 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/26 02:39:39 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 18:08:14 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ Dog& Dog::operator=(const Dog &other) {
      if(this != &other)
         type = other.type;
     return *this;
+}
+
+std::string Dog::getType() const {
+    return type;
 }
 
 Dog::~Dog() {

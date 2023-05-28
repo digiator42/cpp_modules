@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:02 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 06:35:49 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 17:41:18 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ Cat& Cat::operator=(const Cat &other) {
      if(this != &other)
         type = other.type;
     return *this;
+}
+
+std::string Cat::getType() const {
+    return type;
 }
 
 Cat::~Cat() {

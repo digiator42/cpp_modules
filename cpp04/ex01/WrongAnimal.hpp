@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:15 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/25 07:08:06 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 18:03:44 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
     WrongAnimal(const WrongAnimal &other);
     WrongAnimal &operator=(const WrongAnimal &other);
     virtual ~WrongAnimal();
-
+    std::string getType() const;
     void makeSound() const;
 };
 
