@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 05:56:02 by ahassan           #+#    #+#             */
-/*   Updated: 2023/05/27 20:25:34 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/05/28 04:44:47 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ Cat::Cat(const Cat &other) : Animal(other) {
 Cat& Cat::operator=(const Cat &other) {
     if(this != &other)
     {
-        //shallow copy for string in stack 
         type = other.type; 
         //deallocating old memory
         delete this->brain;
@@ -37,6 +36,14 @@ Cat& Cat::operator=(const Cat &other) {
         this->brain = new Brain(*other.brain);
     }
     return *this;
+}
+
+std::string Cat::getIdea(int index) const {
+    return brain->getIdea(index);
+}
+
+void Cat::setIdea(int index, const std::string& idea){
+    brain->setIdea(index, idea);
 }
 
 Cat::~Cat() {
