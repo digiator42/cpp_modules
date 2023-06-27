@@ -35,7 +35,6 @@ int main() {
     // }
 
     ShrubberyCreationForm rform("target");
-    rform.beSigned(bureaucrat);
     rform.execute(bureaucrat);
     // Form form("Form 1", 60, 70);
     // form.beSigned(bureaucrat);
