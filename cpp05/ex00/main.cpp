@@ -10,9 +10,17 @@ int main() {
 
         b1.decrementGrade();
         std::cout << b1 << std::endl;
-
         //throws exception
         Bureaucrat b2("Alice", 0);
+        try
+        {
+            Bureaucrat b2("Alice", 0);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+        
     } catch (const std::exception& e) {
         std::cout << "Exception: " << e.what() << std::endl;
     }

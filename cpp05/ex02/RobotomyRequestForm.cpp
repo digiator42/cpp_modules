@@ -4,8 +4,7 @@
 #include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
-    : AForm("Robotomy Request Form", 72, 45) {
-        (void)target;
+    : AForm("Robotomy Request Form", 72, 45), _target(target) {
     }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
@@ -25,8 +24,8 @@ std::string RobotomyRequestForm::getTarget() const {
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
-    if (!isFormSigned())
-        throw FormNotSignedException();
+    // if (!isFormSigned())
+    //     throw FormNotSignedException();
 
     if (executor.getGrade() > getExecGrade())
         throw GradeTooLowException();
@@ -34,6 +33,8 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
     std::cout << "Drilling noises..." << std::endl;
     std::srand(std::time(nullptr));
     int random = std::rand() % 2;
+
+    std::cout << random << std::endl;
 
     if (random == 0)
         std::cout << getTarget() << " has been robotomized successfully!" << std::endl;

@@ -21,7 +21,8 @@ Form::Form(const std::string& name, int signGrade, int executeGrade)
 }
 
 Form::Form(const Form& other)
-    : name(other.name), isSigned(other.isSigned), signGrade(other.signGrade), executeGrade(other.executeGrade) {}
+    : name(other.name), isSigned(other.isSigned), signGrade(other.signGrade), 
+    executeGrade(other.executeGrade) {}
 
 Form& Form::operator=(const Form& other) {
     if (this != &other) {
