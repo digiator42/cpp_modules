@@ -21,10 +21,8 @@ int main() {
 
     std::cout << found->getName() + '\n';
     
-    notFound = intern.makeForm("NOT-VALID", "NV");
+    notFound = intern.makeForm("NOT-VALID", "NV"); //exception
     notFound->beSigned(bureaucrat);
     notFound->execute(bureaucrat);
-
-    
     return 0;
 }
