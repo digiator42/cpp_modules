@@ -29,7 +29,7 @@ const char* Intern::FormNotFound::what() const throw() {
     return "Form Not Found";
 }
 
-AForm *Intern::makeForm(const std::string& formName, const std::string& target) 
+AForm *Intern::makeForm(const std::string& formName, const std::string& target)
 {
 	std::string levels[3] = {"ShrubberyCreationForm", "RobotomyRequestForm" ,"PresidentialPardonForm"};
 

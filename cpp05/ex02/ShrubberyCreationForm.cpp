@@ -18,11 +18,8 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-    if (!isFormSigned())
-        throw FormNotSignedException();
-
-    if (executor.getGrade() > getExecGrade())
-        throw GradeTooLowException();
+    !isFormSigned() ? throw FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
+        throw GradeTooLowException() : (void)0);
 
     std::ofstream outfile("Shrubbery_" + getName());
     std::string tree = "              ,@@@@@@@,\n"

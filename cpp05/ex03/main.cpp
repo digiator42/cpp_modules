@@ -8,11 +8,11 @@
 int main() {
     
     
-    Bureaucrat bureaucrat("Madam Samah", 44);
+    Bureaucrat bureaucrat("Madam Samah", 45);
 
     Intern intern;
     AForm *found;
-    AForm *notFound;
+    // AForm *notFound;
     found = intern.makeForm("ShrubberyCreationForm", "FOUND");
 
 
@@ -21,8 +21,8 @@ int main() {
 
     std::cout << found->getName() + '\n';
     
-    notFound = intern.makeForm("NOT-VALID", "NV"); //exception
-    notFound->beSigned(bureaucrat);
-    notFound->execute(bureaucrat);
+    // notFound = intern.makeForm("NOT-VALID", "NV"); //exception
+    // notFound->beSigned(bureaucrat);
+    // notFound->execute(bureaucrat);
     return 0;
 }

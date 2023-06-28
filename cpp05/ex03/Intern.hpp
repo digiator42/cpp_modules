@@ -19,7 +19,7 @@ public:
     ~Intern();
 
     // Function to create a AForm
-    AForm* makeForm(const std::string& formName, const std::string& target) ;
+    AForm* makeForm(const std::string& formName, const std::string& target);
 
     AForm* createShrubberyCreationForm(const std::string& target);
     AForm* createRobotomyRequestForm(const std::string& target);

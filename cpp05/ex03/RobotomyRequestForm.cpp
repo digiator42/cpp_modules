@@ -24,11 +24,9 @@ std::string RobotomyRequestForm::getTarget() const {
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
-    // if (!isFormSigned())
-    //     throw FormNotSignedException();
 
-    if (executor.getGrade() > getExecGrade())
-        throw GradeTooLowException();
+    !isFormSigned() ? throw FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
+        throw GradeTooLowException() : (void)0);
 
     std::cout << "Drilling noises..." << std::endl;
     std::srand(std::time(nullptr));
