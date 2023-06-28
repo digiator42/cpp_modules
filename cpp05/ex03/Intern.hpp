@@ -7,6 +7,11 @@
 
 class Intern {
 public:
+    class FormNotFound : public std::exception { 
+        public:
+            const char* what() const throw(); 
+    };
+
     // Constructor
     Intern();
 

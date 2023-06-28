@@ -11,13 +11,20 @@ int main() {
     Bureaucrat bureaucrat("Madam Samah", 44);
 
     Intern intern;
-    AForm *sh;
-    sh = intern.makeForm("ShrubberyCreationForm", "NI");
+    AForm *found;
+    AForm *notFound;
+    found = intern.makeForm("ShrubberyCreationForm", "FOUND");
 
-    sh->beSigned(bureaucrat);
-    sh->execute(bureaucrat);
 
-    std::cout << sh->getName() + '\n';
+    found->beSigned(bureaucrat);
+    found->execute(bureaucrat);
+
+    std::cout << found->getName() + '\n';
+    
+    notFound = intern.makeForm("NOT-VALID", "NV");
+    notFound->beSigned(bureaucrat);
+    notFound->execute(bureaucrat);
+
     
     return 0;
 }
