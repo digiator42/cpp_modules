@@ -16,6 +16,8 @@ int main() {
 
     sh->beSigned(bureaucrat);
     sh->execute(bureaucrat);
+
+    std::cout << sh->getName() + '\n';
     
     return 0;
 }

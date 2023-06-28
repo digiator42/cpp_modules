@@ -27,7 +27,7 @@ AForm* Intern::createPresidentialPardonForm(const std::string& target) {
 
 AForm *Intern::makeForm(const std::string& formName, const std::string& target) 
 {
-	std::string levels[4] = {"ShrubberyCreationForm", "RobotomyRequestForm" ,"PresidentialPardonForm"};
+	std::string levels[3] = {"ShrubberyCreationForm", "RobotomyRequestForm" ,"PresidentialPardonForm"};
 
     AForm *(Intern::*f[3])(const std::string&) = { &Intern::createShrubberyCreationForm, 
                                                 &Intern::createRobotomyRequestForm,
