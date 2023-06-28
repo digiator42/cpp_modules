@@ -3,42 +3,19 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "Form.hpp"
+#include "Intern.hpp"
 
 int main() {
-        Bureaucrat bureaucrat("Madam Samah", 44);
-    // try {
-    //     Bureaucrat bureaucrat("Madam Samah", 50);
-    //     std::cout << bureaucrat << std::endl;
+    
+    
+    Bureaucrat bureaucrat("Madam Samah", 44);
 
-    //     Form form("Form 1", 60, 70);
-    //     std::cout << form << std::endl;
+    Intern intern;
+    AForm *sh;
+    sh = intern.makeForm("ShrubberyCreationForm", "NI");
 
-    //     try {
-    //         form.beSigned(bureaucrat);
-    //         std::cout << form << std::endl;
-    //     } catch (const std::exception& e) {
-    //         std::cout << "Exception: " << e.what() << std::endl;
-    //     }
-
-    //     Bureaucrat highGradeBureaucrat("Madam Ragaa", 30);
-    //     std::cout << highGradeBureaucrat << std::endl;
-
-    //     try {
-    //         form.beSigned(highGradeBureaucrat);
-    //         std::cout << form << std::endl;
-    //     } catch (const std::exception& e) {
-    //         std::cout << "Exception: " << e.what() << std::endl;
-    //     }
-
-    // } catch (const std::exception& e) {
-    //     std::cout << "Exception: " << e.what() << std::endl;
-    // }
-
-    ShrubberyCreationForm rform("target");
-    rform.execute(bureaucrat);
-    // Form form("Form 1", 60, 70);
-    // form.beSigned(bureaucrat);
-    // rform.execute(bureaucrat);
-
+    sh->beSigned(bureaucrat);
+    sh->execute(bureaucrat);
+    
     return 0;
 }

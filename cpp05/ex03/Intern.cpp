@@ -5,7 +5,6 @@
 #include <iostream>
 
 Intern::Intern() {
-   
 }
 
 Intern::~Intern() {}
@@ -24,4 +23,21 @@ AForm* Intern::createRobotomyRequestForm(const std::string& target) {
 AForm* Intern::createPresidentialPardonForm(const std::string& target) {
 
     return new PresidentialPardonForm(target);
+}
+
+AForm *Intern::makeForm(const std::string& formName, const std::string& target) 
+{
+	std::string levels[4] = {"ShrubberyCreationForm", "RobotomyRequestForm" ,"PresidentialPardonForm"};
+
+    AForm *(Intern::*f[3])(const std::string&) = { &Intern::createShrubberyCreationForm, 
+                                                &Intern::createRobotomyRequestForm,
+                                                &Intern::createPresidentialPardonForm
+                                                };
+	for (size_t i = 0; i < levels->length(); i++)
+	{
+        if(formName == levels[i])
+			return (this->*f[i])(target);    
+	}
+	return (NULL);
+	
 }
