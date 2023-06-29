@@ -28,7 +28,7 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
         throw GradeTooLowException() : (void)0);
 
     std::cout << "Drilling noises..." << std::endl;
-    std::srand(std::time(nullptr));
+    std::srand(std::time(NULL));
     int random = std::rand() % 2;
 
     std::cout << random << std::endl;

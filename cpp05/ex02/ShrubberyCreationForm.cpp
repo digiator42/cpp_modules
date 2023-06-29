@@ -24,8 +24,11 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
     !isFormSigned() ? throw Bureaucrat::FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
         throw GradeTooLowException() : (void)0);
-
-    std::ofstream outfile("Shrubbery_" + getName());
+    #ifdef __linux__
+        std::ofstream outfile("Shrubbery_form"); //   + getName() doesn't work on linux
+    #else
+        std::ofstream outfile("Shrubbery_" + getName()); //   + getName() doesn't work on linux
+    #endif    
     std::string tree = "              ,@@@@@@@,\n"
                    "    ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
                    " ,&%%&%&&%,@@@@@/@@@@@@,8888\\\\88/8o\n"
