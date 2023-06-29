@@ -1,11 +1,10 @@
 #include "AForm.hpp"
 
 AForm::AForm(const std::string& name, int signGrade, int execGrade)
-    : name(name), isSigned(false), signGrade(signGrade), execGrade(execGrade) {
-    if (signGrade < 1)
-        throw GradeTooHighException();
-    if (signGrade > 150)
-        throw GradeTooLowException();
+        : name(name), isSigned(false), signGrade(signGrade), execGrade(execGrade) {
+            
+    signGrade < 1 ? throw GradeTooHighException() : (signGrade > 150 ? 
+        throw GradeTooLowException() : (void)0);
 }
 
 AForm::AForm(const AForm& other)
@@ -38,6 +37,7 @@ int AForm::getExecGrade() const {
 }
 
 void AForm::beSigned(const Bureaucrat& bureaucrat) {
+    std::cout << bureaucrat.getGrade() << signGrade << "\n";
     if (bureaucrat.getGrade() <= signGrade)
         isSigned = true;
     else

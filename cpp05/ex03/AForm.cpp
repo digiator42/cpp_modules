@@ -2,10 +2,9 @@
 
 AForm::AForm(const std::string& name, int signGrade, int execGrade)
     : name(name), isSigned(false), signGrade(signGrade), execGrade(execGrade) {
-    if (signGrade < 1)
-        throw GradeTooHighException();
-    if (signGrade > 150)
-        throw GradeTooLowException();
+    
+    signGrade < 1 ? throw GradeTooHighException() : (signGrade > 150 ? 
+        throw GradeTooLowException() : (void)0);
 }
 
 AForm::AForm(const AForm& other)
