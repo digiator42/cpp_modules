@@ -1,6 +1,6 @@
 NAME = bureaucrat
 
-SRCS = main.cpp Form.cpp ShrubberyCreationForm.cpp \
+SRCS = main.cpp ShrubberyCreationForm.cpp \
 	   Bureaucrat.cpp PresidentialPardonForm.cpp AForm.cpp RobotomyRequestForm.cpp \
 	   Intern.cpp
 
