@@ -1,6 +1,10 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
+ShrubberyCreationForm::ShrubberyCreationForm()
+    : AForm("Default", 145, 137){
+    }
+
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
     : AForm(target, 145, 137), _target(target) {
     }
@@ -18,7 +22,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-    !isFormSigned() ? throw FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
+    !isFormSigned() ? throw Bureaucrat::FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
         throw GradeTooLowException() : (void)0);
 
     std::ofstream outfile("Shrubbery_" + getName());

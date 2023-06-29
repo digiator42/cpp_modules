@@ -2,9 +2,9 @@
 
 AForm::AForm(const std::string& name, int signGrade, int execGrade)
     : name(name), isSigned(false), signGrade(signGrade), execGrade(execGrade) {
-    if (signGrade < 1 || execGrade < 1)
+    if (signGrade < 1)
         throw GradeTooHighException();
-    if (signGrade > 150 || execGrade > 150)
+    if (signGrade > 150)
         throw GradeTooLowException();
 }
 
@@ -45,11 +45,11 @@ void AForm::beSigned(const Bureaucrat& bureaucrat) {
 }
 
 const char* AForm::GradeTooHighException::what() const throw() {
-    return "Grade too high";
+    return "Exception: Grade too high";
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
-    return "Grade too low";
+    return "Exception: Grade too low";
 }
 
 std::ostream& operator<<(std::ostream& out, const AForm& form) {

@@ -2,44 +2,28 @@
 #include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main() {
-        // Bureaucrat bureaucrat("Madam Samah", 44);
-    // try {
-    //     Bureaucrat bureaucrat("Madam Samah", 50);
-    //     std::cout << bureaucrat << std::endl;
 
-    //     Form form("Form 1", 60, 70);
-    //     std::cout << form << std::endl;
+    try {
 
-    //     try {
-    //         form.beSigned(bureaucrat);
-    //         std::cout << form << std::endl;
-    //     } catch (const std::exception& e) {
-    //         std::cout << "Exception: " << e.what() << std::endl;
-    //     }
+        Bureaucrat bureaucrat("Madam Samah", 145);
+        ShrubberyCreationForm sform("target1");
+        bureaucrat.signForm(sform);
+        ShrubberyCreationForm sform2;
+        sform2 = sform;
+        std::cout << sform << std::endl;
+        std::cout << sform2 << std::endl;
+        std::cout << (sform2.isFormSigned() ?  "TRUE" : "FALSE") << std::endl;
+        std::cout << (sform.isFormSigned() ?  "TRUE" : "FALSE") << std::endl;
 
-    //     Bureaucrat highGradeBureaucrat("Madam Ragaa", 30);
-    //     std::cout << highGradeBureaucrat << std::endl;
+        
+        Bureaucrat bureaucrat2("Madam Samah", 0); // Exception
 
-    //     try {
-    //         form.beSigned(highGradeBureaucrat);
-    //         std::cout << form << std::endl;
-    //     } catch (const std::exception& e) {
-    //         std::cout << "Exception: " << e.what() << std::endl;
-    //     }
-
-    // } catch (const std::exception& e) {
-    //     std::cout << "Exception: " << e.what() << std::endl;
-    // }
-
-    // ShrubberyCreationForm rform("target");
-    // rform.beSigned(bureaucrat);
-    // rform.execute(bureaucrat);
-    // Form form("Form 1", 60, 70);
-    // form.beSigned(bureaucrat);
-    // rform.execute(bureaucrat);
-
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
+        }
 
     return 0;
 }

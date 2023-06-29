@@ -2,7 +2,7 @@
 #include <iostream>
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
-    : AForm("Presidential Pardon Form", 25, 5) {
+    : AForm("Presidential Pardon Form", 151, 5) {
         (void)target;
     }
 
@@ -24,6 +24,6 @@ std::string PresidentialPardonForm::getTarget() const {
 
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const {
     
-    !isFormSigned() ? throw FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
+    !isFormSigned() ? throw Bureaucrat::FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
         throw GradeTooLowException() : std::cout << getTarget() << " has been pardoned by chatGPT." << std::endl);
 }

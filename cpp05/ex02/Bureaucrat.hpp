@@ -3,9 +3,16 @@
 
 #include <stdexcept>
 #include <iostream>
+#include "AForm.hpp"
 
+class AForm;
 
 class Bureaucrat {
+
+private:
+    const std::string name;
+    int grade;
+
 public:
     class GradeTooHighException : public std::exception {
     public:
@@ -17,6 +24,13 @@ public:
         const char* what() const throw();
     };
 
+    class FormNotSignedException : public std::exception {
+    public:
+            const char* what() const throw() {
+                return "Exception: Form is not signed.";
+            }
+    };
+
     Bureaucrat(const std::string& name, int grade);
     ~Bureaucrat();
 
@@ -25,10 +39,8 @@ public:
 
     void incrementGrade();
     void decrementGrade();
-
-private:
-    const std::string name;
-    int grade;
+    void signForm(AForm &form);
+    // void executeForm(AForm const & form);
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat);
