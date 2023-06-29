@@ -37,8 +37,7 @@ AForm *Intern::makeForm(const std::string& formName, const std::string& target)
                                                 &Intern::createRobotomyRequestForm,
                                                 &Intern::createPresidentialPardonForm
                                                 };
-
-	for (size_t i = 0; i < levels->length(); i++)
-        return formName == levels[i] ? (this->*f[i])(target) : throw Intern::FormNotFound();  
-	throw Intern::FormNotFound();
+    size_t i = 0;
+	while (i < levels->length()) { i++; };
+    return (i < 3 && formName == levels[i]) ? (this->*f[i])(target) : throw Intern::FormNotFound();  
 }
