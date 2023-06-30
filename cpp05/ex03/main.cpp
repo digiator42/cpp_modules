@@ -11,19 +11,17 @@ int main() {
         Bureaucrat bureaucrat("Madam Samah", 45);
 
         Intern intern;
-        AForm *found;
-        AForm *notFound;
-        found = intern.makeForm("ShrubberyCreationForm", "FOUND");
+        AForm *form[3] = {
+            intern.makeForm("ShrubberyCreationForm", "FOUND"),
+            intern.makeForm("RobotomyRequestForm", "FOUND"),
+            intern.makeForm("PresidentialPardonForm", "FOUND"),
+        };
+        for (size_t i = 0; i < 3; i++)
+            std::cout << form[i]->getName() + '\n';
 
-
-        // found->beSigned(bureaucrat);
-        // found->execute(bureaucrat);
-
-        std::cout << found->getName() + '\n';
+        bureaucrat.signForm(*form[0]);
         
-        notFound = intern.makeForm("NOT-VALID", "NV"); //exception
-        // notFound->beSigned(bureaucrat);
-        // notFound->execute(bureaucrat);
+        intern.makeForm("NOT-VALID", "NV"); // Exception: Form Not Found
     }
     catch(const std::exception& e)
     {
