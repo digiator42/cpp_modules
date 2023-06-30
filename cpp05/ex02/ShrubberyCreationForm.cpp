@@ -3,11 +3,11 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("Default", 145, 137){
-    }
+}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
     : AForm(target, 145, 137), _target(target) {
-    }
+}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
     : AForm(other) {}
@@ -22,8 +22,11 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-    !isFormSigned() ? throw Bureaucrat::FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
+    !isFormSigned() ? 
+        throw Bureaucrat::FormNotSignedException() : 
+    (executor.getGrade() > getExecGrade() ? 
         throw GradeTooLowException() : (void)0);
+
     #ifdef __linux__
         std::ofstream outfile("Shrubbery_form"); //   + getName() doesn't work on linux
     #else
