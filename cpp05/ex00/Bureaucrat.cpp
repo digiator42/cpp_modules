@@ -4,7 +4,9 @@ Bureaucrat::Bureaucrat() : name("Default"), grade(0) {}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name) {
 
-    grade < 1 ? throw GradeTooHighException() : (grade > 150 ? 
+    grade < 1 ? 
+        throw GradeTooHighException() : 
+    (grade > 150 ? 
         throw GradeTooLowException() : this->grade = grade);
 }
 
