@@ -24,6 +24,10 @@ std::string PresidentialPardonForm::getTarget() const {
 
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const {
 
-    !isFormSigned() ? throw FormNotSignedException() : (executor.getGrade() > getExecGrade() ? 
-        throw GradeTooLowException() : std::cout << getTarget() << " has been pardoned by chatGPT." << std::endl);
+    if (!isFormSigned()) {
+        throw FormNotSignedException();
+    } else if (executor.getGrade() > getExecGrade()) {
+        throw GradeTooLowException();
+    }
+    std::cout << getTarget() << " has been pardoned by chatGPT." << std::endl;
 }

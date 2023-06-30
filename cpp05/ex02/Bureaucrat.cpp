@@ -1,8 +1,12 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(grade) {
-    grade < 1 ? throw GradeTooHighException() : (grade > 150 ? 
-        throw GradeTooLowException() : this->grade = grade);
+    if (grade < 1) {
+        throw GradeTooHighException();
+    } else if (grade > 150) {
+        throw GradeTooLowException();
+    }
+    this->grade = grade;
 }
 
 Bureaucrat::~Bureaucrat() {}
@@ -36,7 +40,8 @@ void Bureaucrat::signForm(AForm &form) {
     }
     catch(const std::exception& e)
     {
-        std::cerr << this->getName() + " couldn't sign " + form.getName() << " because -> " << (e.what() + 11) << std::endl;
+        std::cerr << this->getName() + " couldn't sign " + form.getName() << " because -> " 
+            << (e.what() + 11) << std::endl;
     }
     
 }
@@ -45,7 +50,8 @@ void Bureaucrat::executeForm(AForm const & form) {
     try {
         form.execute(*this);
     } catch (std::exception& e) {
-        std::cerr << this->getName() + " couldn't excecute " + form.getName() << " because -> " << (e.what() + 11) << std::endl;
+        std::cerr << this->getName() + " couldn't excecute " + form.getName() << " because -> " 
+            << (e.what() + 11) << std::endl;
     }
 }
 

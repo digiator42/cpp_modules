@@ -27,7 +27,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
     #ifdef __linux__
         std::ofstream outfile("Shrubbery_form"); //   + getName() doesn't work on linux
     #else
-        std::ofstream outfile("Shrubbery_" + getName()); //   + getName() doesn't work on linux
+        std::ofstream outfile("Shrubbery_" + getName());
     #endif    
     std::string tree = "              ,@@@@@@@,\n"
                    "    ,,,.   ,@@@@@@/@@,  .oo8888o.\n"

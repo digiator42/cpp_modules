@@ -5,7 +5,7 @@ SRCS = main.cpp ShrubberyCreationForm.cpp \
 
 CPP = c++
 
-CXXFLAGS  = -std=c++98 -Wall -Wextra -Werror -g3
+CXXFLAGS  =  -Wall -Wextra -Werror -g3
 
 OBJS = $(SRCS:.cpp=.o)
 
