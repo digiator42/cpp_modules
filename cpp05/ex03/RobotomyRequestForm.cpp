@@ -3,9 +3,12 @@
 #include <cstdlib>
 #include <ctime>
 
+RobotomyRequestForm::RobotomyRequestForm() 
+    : AForm("Robotomy Request Form", 72, 45) {}
+
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
     : AForm("Robotomy Request Form", 72, 45), _target(target) {
-    }
+}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
     : AForm(other) {}

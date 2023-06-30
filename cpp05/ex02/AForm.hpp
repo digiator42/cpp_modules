@@ -14,6 +14,7 @@ class AForm {
         const int execGrade;
     
     public:
+        AForm();
         AForm(const std::string& name, int signGrade, int execGrade);
         AForm(const AForm& other);
         virtual ~AForm();
