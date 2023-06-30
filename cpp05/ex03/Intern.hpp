@@ -3,7 +3,6 @@
 
 #include "AForm.hpp"
 #include <string>
-#include <map>
 
 class Intern {
 public:
@@ -14,7 +13,8 @@ public:
 
     // Constructor
     Intern();
-
+    Intern(Intern const & intern);
+    Intern & operator=(Intern const & obj);
     // Destructor
     ~Intern();
 

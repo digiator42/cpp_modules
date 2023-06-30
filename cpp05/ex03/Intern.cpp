@@ -7,6 +7,15 @@
 Intern::Intern() {
 }
 
+Intern::Intern(Intern const & intern){
+    (void)intern;
+}
+
+Intern &Intern::operator=(Intern const & obj) {
+    (void)obj;
+    return *this;
+}
+
 Intern::~Intern() {}
 
 
