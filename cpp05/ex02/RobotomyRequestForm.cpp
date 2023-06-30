@@ -34,8 +34,6 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
     std::srand(std::time(NULL));
     int random = std::rand() % 2;
 
-    std::cout << random << std::endl;
-
     if (random == 0)
         std::cout << getTarget() << " has been robotomized successfully!" << std::endl;
     else
