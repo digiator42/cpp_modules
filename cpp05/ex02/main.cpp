@@ -8,7 +8,7 @@ int main() {
 
     try {
 
-        Bureaucrat bureaucrat("Madam Samah", 146);
+        Bureaucrat bureaucrat("Madam none", 146);
         ShrubberyCreationForm sform("target1");
         bureaucrat.signForm(sform);
         ShrubberyCreationForm sform2;
@@ -19,7 +19,7 @@ int main() {
 
         // bureaucrat.executeForm(sform);
         
-        // Bureaucrat bureaucrat2("Madam Samah", 0); // Exception
+        // Bureaucrat bureaucrat2("Madam none", 0); // Exception
 
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
@@ -28,7 +28,7 @@ int main() {
     try
     {
         //execute grade for shrubbery should be < 137
-        Bureaucrat bureaucrat("Madam ragaa", 136);
+        Bureaucrat bureaucrat("Madam none", 136);
         ShrubberyCreationForm sform("target1");
         bureaucrat.signForm(sform);
         bureaucrat.executeForm(sform);

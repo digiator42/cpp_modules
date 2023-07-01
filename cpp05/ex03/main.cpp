@@ -8,18 +8,19 @@ int main() {
     
     try
     {
-        Bureaucrat bureaucrat("Madam Samah", 45);
+        Bureaucrat bureaucrat("Madam none", 146); // Exception: Grade too low
 
         Intern intern;
         AForm *form[3] = {
             intern.makeForm("ShrubberyCreationForm", "FOUND"),
             intern.makeForm("RobotomyRequestForm", "FOUND"),
-            intern.makeForm("PresidentialPardonForm", "FOUND"),
+            intern.makeForm("PresidentialPardonForm", "FOUND")
         };
         for (size_t i = 0; i < 3; i++)
             std::cout << form[i]->getName() + '\n';
-
         bureaucrat.signForm(*form[0]);
+        for (size_t i = 0; i < 3; i++)
+            delete form[i];
         
         intern.makeForm("NOT-VALID", "NV"); // Exception: Form Not Found
     }
