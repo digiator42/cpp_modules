@@ -7,7 +7,14 @@
 int main() {
 
     try {
+        Bureaucrat bureaucrat0;
+        std::cout << bureaucrat0 << std::endl;
+        PresidentialPardonForm pform("target1");
+        bureaucrat0.signForm(pform);
+        bureaucrat0.executeForm(pform);
+        std::cout << pform << std::endl;
 
+        
         Bureaucrat bureaucrat("Madam one", 45);
         ShrubberyCreationForm sform("target1");
         bureaucrat.signForm(sform);

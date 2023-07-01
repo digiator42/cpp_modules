@@ -3,6 +3,8 @@
 
 int main() {
     try {
+        Bureaucrat bureaucrat0;
+        std::cout << bureaucrat0 << std::endl;
         Bureaucrat bureaucrat("Madam none", 50);
         std::cout << bureaucrat << std::endl;
 
