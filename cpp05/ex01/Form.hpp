@@ -1,12 +1,12 @@
-#ifndef AFORM_HPP
-#define AFORM_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include <string>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class AForm {
+class Form {
     private:
         const std::string name;
         bool isSigned;
@@ -14,12 +14,12 @@ class AForm {
         const int execGrade;
     
     public:
-        AForm();
-        AForm(const std::string& name, int signGrade, int execGrade);
-        AForm(const AForm& other);
-        ~AForm();
+        Form();
+        Form(const std::string& name, int signGrade, int execGrade);
+        Form(const Form& other);
+        ~Form();
     
-        AForm& operator=(const AForm& other);
+        Form& operator=(const Form& other);
     
         const std::string& getName() const;
         bool isFormSigned() const;
