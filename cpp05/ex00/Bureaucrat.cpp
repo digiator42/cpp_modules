@@ -10,6 +10,14 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name) {
         throw GradeTooLowException() : this->grade = grade);
 }
 
+Bureaucrat::Bureaucrat(Bureaucrat const &obj) : name(obj.getName()) {
+    grade < 1 ? 
+        throw GradeTooHighException() : 
+    grade > 150 ? 
+        throw GradeTooLowException() : 
+    this->grade = obj.getGrade();
+}
+
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &obj) {
     if (this != &obj)
     {

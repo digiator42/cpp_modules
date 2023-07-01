@@ -26,7 +26,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
         throw FormNotSignedException();
     } else if (executor.getGrade() > getExecGrade()) {
         throw GradeTooLowException();
-    }
+}
     
     #ifdef __linux__
         std::ofstream outfile("Shrubbery_form"); //   + getName() doesn't work on linux

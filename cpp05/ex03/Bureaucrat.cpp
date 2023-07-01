@@ -11,6 +11,14 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name) {
     this->grade = grade);
 }
 
+Bureaucrat::Bureaucrat(Bureaucrat const &obj) : name(obj.getName()) {
+    grade < 1 ? 
+        throw GradeTooHighException() : 
+    grade > 150 ? 
+        throw GradeTooLowException() : 
+    this->grade = obj.getGrade();
+}
+
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &obj) {
     if (this != &obj)
     {
@@ -67,6 +75,7 @@ void Bureaucrat::executeForm(AForm const & form) {
         std::cerr << this->getName() + " couldn't excecute " + form.getName() << " because -> " 
             << (e.what() + 11) << std::endl;
     }
+    std::cout << this->getName() + " excecuted " + form.getName() << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {

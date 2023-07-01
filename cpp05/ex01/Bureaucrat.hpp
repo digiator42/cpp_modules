@@ -3,7 +3,10 @@
 
 #include <stdexcept>
 #include <iostream>
+#include "AForm.hpp"
 
+
+class AForm;
 
 class Bureaucrat {
 private:
@@ -23,17 +26,20 @@ public:
 
     Bureaucrat();
     Bureaucrat(const std::string& name, int grade);
+    Bureaucrat(Bureaucrat const &obj);
     Bureaucrat &operator=(Bureaucrat const &obj);
     ~Bureaucrat();
 
     std::string getName() const;
     int getGrade() const;
-
+    
+    void signForm(AForm &form);
     void incrementGrade();
     void decrementGrade();
 
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat);
+
 
 #endif
