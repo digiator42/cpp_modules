@@ -1,6 +1,6 @@
 #include "AForm.hpp"
 
-AForm::AForm(): name("Default"), isSigned(false), signGrade(0), execGrade(0) {}
+AForm::AForm(): name("Default"), isSigned(false), signGrade(1), execGrade(1) {}
 
 AForm::AForm(const std::string& name, int signGrade, int execGrade)
     : name(name), isSigned(false), signGrade(signGrade), execGrade(execGrade) {

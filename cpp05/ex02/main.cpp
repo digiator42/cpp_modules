@@ -9,10 +9,17 @@ int main() {
     try {
         Bureaucrat bureaucrat0;
         std::cout << bureaucrat0 << std::endl;
-        PresidentialPardonForm pform("target1");
+        PresidentialPardonForm pform("target0");
         bureaucrat0.signForm(pform);
         bureaucrat0.executeForm(pform);
         std::cout << pform << std::endl;
+
+        Bureaucrat bureaucrat10;
+        std::cout << bureaucrat10 << std::endl;
+        PresidentialPardonForm dform("target10");
+        bureaucrat0.signForm(dform);
+        bureaucrat0.executeForm(dform);
+        std::cout << dform << std::endl;
 
         
         Bureaucrat bureaucrat("Madam one", 45);
@@ -27,7 +34,7 @@ int main() {
 
         bureaucrat.executeForm(sform);
         
-        Bureaucrat bureaucrat2("Madam none", 0); // Exception
+        Bureaucrat bureaucrat2("Madam one", 0); // Exception
 
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;

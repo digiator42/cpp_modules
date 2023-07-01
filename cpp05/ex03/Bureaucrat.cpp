@@ -25,9 +25,9 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &obj) {
         grade < 1 ? 
             throw GradeTooHighException() : 
         grade > 150 ? 
-            throw GradeTooLowException() : (void)0;
+            throw GradeTooLowException() : 
+        this->grade = obj.getGrade();
     }
-    this->grade = obj.getGrade();
     return *this;
 }
 
