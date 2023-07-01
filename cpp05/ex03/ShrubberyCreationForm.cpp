@@ -2,11 +2,11 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-    : AForm("ShrubberyCreationForm", 145, 137){
+    : AForm("Shrubbery Creation Form", 145, 137){
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
-    : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
+    : AForm("Shrubbery Creation Form", 145, 137), _target(target) {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)

@@ -1,8 +1,0 @@
-
-canonical form 
-
-class form in ex01
-
-msg to print excecuted form
-
-leaks ex03

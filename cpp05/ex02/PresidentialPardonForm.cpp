@@ -2,10 +2,10 @@
 #include <iostream>
 
 PresidentialPardonForm::PresidentialPardonForm()
-    : AForm("Presidential Pardon Form", 151, 5) {}
+    : AForm("Presidential Pardon Form", 25, 5) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
-    : AForm("Presidential Pardon Form", 151, 5), _target(target) {}
+    : AForm("Presidential Pardon Form", 25, 5), _target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other)
     : AForm(other) {}

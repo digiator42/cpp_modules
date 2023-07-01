@@ -40,7 +40,7 @@ const char* Intern::FormNotFound::what() const throw() {
 
 AForm *Intern::makeForm(const std::string& formName, const std::string& target)
 {
-	std::string levels[3] = {"ShrubberyCreationForm", "RobotomyRequestForm" ,"PresidentialPardonForm"};
+	std::string levels[3] = {"shrubbery request", "robotomy request" ,"presidential request"};
 
     AForm *(Intern::*f[3])(const std::string&) = { &Intern::createShrubberyCreationForm, 
                                                 &Intern::createRobotomyRequestForm,
