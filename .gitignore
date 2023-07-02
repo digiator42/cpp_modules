@@ -2,3 +2,6 @@
 ClapTrap
 bureaucrat
 .vscode
+.gitignore
+cpp06
+.*
