@@ -1,6 +1,6 @@
 NAME = convertor
 
-SRCS = convertor.cpp
+SRCS = convertor.cpp main.cpp
 
 CXX = c++
 
