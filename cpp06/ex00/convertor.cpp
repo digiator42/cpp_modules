@@ -41,8 +41,6 @@ bool ScalarConverter::isValidFormat(std::string s)
 
 
 void ScalarConverter::convert(const std::string& literal) {
-    !isValidFormat(literal) ?
-        throw std::invalid_argument("Invalid Input") : (void)0;
 
     if (literal == "nan" || literal == "-inf" || literal == "+inf" 
         || literal == "-inff" || literal == "+inff" || literal == "nanf") {
@@ -53,6 +51,9 @@ void ScalarConverter::convert(const std::string& literal) {
         return;
     }
 
+    !isValidFormat(literal) ?
+        throw std::invalid_argument("Invalid Input") : (void)0;
+        
     toChar(literal);
     toInt(literal);
     toFloat(literal);
