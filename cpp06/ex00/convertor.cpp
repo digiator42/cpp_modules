@@ -7,24 +7,44 @@
 
 int _stoi(std::string s)
 {
-    std::stringstream ss(s);
-    int n;
-    ss >> n;
-    return n;
+    std::istringstream iss(s);
+    int value;
+    if (!(iss >> value)) {
+        // Failed to convert
+        throw std::invalid_argument("Invalid conversion");
+    }
+    return value;
 }
-int _stof(std::string s)
+
+bool isAllDigit(std::string s)
 {
-    std::stringstream ss(s);
-    float n;
-    ss >> n;
-    return n;
+    int counter = 0;
+    for (size_t i = 0; i < s.length(); i++) {
+        if (s[i] == '.' || s[i] == 'f')
+            counter++;
+        if (!isdigit(s[i]) && s[i] != '.' && s[i] != 'f')
+            return false;
+    }
+    return counter > 2 ? false : true;
 }
-int _stod(std::string s)
+
+
+float parseFloat(std::string s)
 {
-    std::stringstream ss(s);
-    double n;
-    ss >> n;
-    return n;
+    if (!isAllDigit(s)) {
+        throw std::invalid_argument("Invalid float format");
+    }
+    return static_cast<float>(atof(s.c_str()));
+    // return static_cast<float>(_stoi(s));
+}
+
+
+float _stof(std::string s)
+{
+    if (s.find('f') != std::string::npos) {
+        s.erase(s.find('f'));
+    }
+    return std::stof(s);
 }
 
 class ScalarConverter {
@@ -40,8 +60,7 @@ public:
         }
         // to char
         try {
-            char charValue = _stoi(literal);
-            std::cout << "int --> " << literal << std::endl;
+            char charValue = static_cast<char>(_stoi(literal));
             if (isprint(charValue)) {
                 std::cout << "char: '" << charValue << "'" << std::endl;
             } else {
@@ -53,7 +72,7 @@ public:
 
         // to int
         try {
-            int intValue = _stoi(literal);
+            int intValue = isAllDigit(literal) ? static_cast<int>(_stoi(literal)) : throw std::invalid_argument("Invalid int format");
             std::cout << "int: " << intValue << std::endl;
         } catch (const std::exception&) {
             std::cout << "int: Conversion not possible" << std::endl;
@@ -61,7 +80,7 @@ public:
 
         // to float
 		try {
-            float floatValue = _stof(literal);
+            float floatValue = parseFloat(literal);
             std::cout << "float: " << std::fixed << std::setprecision(1) << floatValue << "f" << std::endl;
         } catch (const std::exception&) {
             std::cout << "float: Conversion not possible" << std::endl;
@@ -69,7 +88,7 @@ public:
 
         // to double
         try {
-            double doubleValue = _stod(literal);
+            double doubleValue = static_cast<double>(parseFloat(literal));
             std::cout << "double: " << doubleValue << std::endl;
         } catch (const std::exception&) {
             std::cout << "double: Conversion not possible" << std::endl;

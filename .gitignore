@@ -1,7 +1,6 @@
 *.o
-ClapTrap
-bureaucrat
+convertor
 .vscode
-.gitignore
-cpp06
 .*
+conv.cpp
+a.out
