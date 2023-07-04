@@ -27,12 +27,11 @@ bool ScalarConverter::isValidFormat(std::string s)
 {
     int dotCounter = 0;
     int fCounter = 0;
-
     for (size_t i = 0; i < s.length(); i++) {
         if (s[i] == '.')
             dotCounter++;
         if (s[i] == 'f')
-            i == s.length() - 1 ? fCounter++ : fCounter += 2;
+            i == s.length() - 1 && i != 0 && dotCounter ? fCounter++ : fCounter += 2;
         if (!isdigit(s[i]) && s[i] != '.' && s[i] != 'f')
             return false;
     }
@@ -50,10 +49,13 @@ void ScalarConverter::convert(const std::string& literal) {
         std::cout << "double: " << literal << "\n";
         return;
     }
-
-    !isValidFormat(literal) ?
-        throw std::invalid_argument("Invalid Input") : (void)0;
-        
+    try {
+        !isValidFormat(literal) ?
+            throw std::invalid_argument("Invalid Input") : (void)0;
+    } catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+        return ;
+    }
     toChar(literal);
     toInt(literal);
     toFloat(literal);

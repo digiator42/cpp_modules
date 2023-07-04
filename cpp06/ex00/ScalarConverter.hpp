@@ -2,7 +2,6 @@
 #define SCALAR_CONVERTOR_H
 
 #include <iostream>
-#include <limits>
 #include <iomanip>
 #include <string>
 #include <climits>
