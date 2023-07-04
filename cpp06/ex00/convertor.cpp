@@ -2,6 +2,7 @@
 #include <limits>
 #include <iomanip>
 #include <string>
+#include <climits>
 #include <sstream>
 
 
@@ -13,6 +14,7 @@ int _stoi(std::string s)
         // Failed to convert
         throw std::invalid_argument("Invalid conversion");
     }
+    // std::cout << "value: " << value << std::endl;
     return value;
 }
 
@@ -34,22 +36,19 @@ float parseFloat(std::string s)
     if (!isAllDigit(s)) {
         throw std::invalid_argument("Invalid float format");
     }
-    return static_cast<float>(atof(s.c_str()));
-    // return static_cast<float>(_stoi(s));
+    // return static_cast<float>(atof(s.c_str()));
+    return static_cast<float>(_stoi(s));
 }
 
 
-float _stof(std::string s)
-{
-    if (s.find('f') != std::string::npos) {
-        s.erase(s.find('f'));
-    }
-    return std::stof(s);
-}
 
 class ScalarConverter {
 public:
     static void convert(const std::string& literal) {
+
+        !isAllDigit(literal) ?
+            throw std::invalid_argument("Worng Type") : (void)0;
+
         if (literal == "nan" || literal == "-inf" || literal == "+inf" 
             || literal == "-inff" || literal == "+inff" || literal == "nanf") {
             std::cout << "char: impossible\n";
@@ -60,6 +59,8 @@ public:
         }
         // to char
         try {
+            if (_stoi(literal) > CHAR_MAX || _stoi(literal) < CHAR_MIN)
+                throw std::invalid_argument("Invalid conversion");
             char charValue = static_cast<char>(_stoi(literal));
             if (isprint(charValue)) {
                 std::cout << "char: '" << charValue << "'" << std::endl;
@@ -72,7 +73,7 @@ public:
 
         // to int
         try {
-            int intValue = isAllDigit(literal) ? static_cast<int>(_stoi(literal)) : throw std::invalid_argument("Invalid int format");
+            int intValue = static_cast<int>(_stoi(literal));
             std::cout << "int: " << intValue << std::endl;
         } catch (const std::exception&) {
             std::cout << "int: Conversion not possible" << std::endl;
