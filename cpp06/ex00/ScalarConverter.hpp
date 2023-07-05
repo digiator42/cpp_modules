@@ -8,20 +8,20 @@
 #include <sstream>
 
 class ScalarConverter {
-
-	public:
+	private:
 		ScalarConverter();
 		ScalarConverter(ScalarConverter const &obj);
 		ScalarConverter &operator=(ScalarConverter const &obj);
 		~ScalarConverter();
 
-		void convert(const std::string& literal);
-		bool isValidFormat(std::string s);
-		float _stoi(std::string s);
-		void toChar(std::string s);
-		void toInt(std::string s);
-		void toFloat(std::string s);
-		void toDouble(std::string s);
+	public:
+		static void convert(const std::string& literal);
+		static bool isValidFormat(std::string s);
+		static float _stoi(std::string s);
+		static void toChar(std::string s);
+		static void toInt(std::string s);
+		static void toFloat(std::string s);
+		static void toDouble(std::string s);
 };
 
 #endif
