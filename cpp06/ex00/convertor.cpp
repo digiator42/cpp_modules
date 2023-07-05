@@ -28,6 +28,8 @@ bool ScalarConverter::isValidFormat(std::string s)
     int dotCounter = 0;
     int fCounter = 0;
     for (size_t i = 0; i < s.length(); i++) {
+        if (i == 0 && (s[0] == '+' || s[0] == '-'))
+            i++;
         if (s[i] == '.')
             dotCounter++;
         if (s[i] == 'f')
