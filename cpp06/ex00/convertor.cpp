@@ -53,7 +53,7 @@ void ScalarConverter::convert(const std::string& literal) {
     }
     
 
-    if (literal.length() == 1 && std::isprint(literal[0])) { 
+    if ((literal.length() == 1 && std::isprint(literal[0])) || literal[0] == 0) { 
         std::cout << "char: '" << literal << "'\n";
         std::cout << "int: " << static_cast<int>(literal[0]) << "\n";
         std::cout << "float: " << static_cast<int>(literal[0]) << "f\n";
@@ -110,7 +110,8 @@ void ScalarConverter::toFloat(std::string s)
 {
     // to float
 	try {
-        s.pop_back();
+        if (s[s.length() - 1] == 'f')
+            s.pop_back();
         float floatValue = _stoi(s);
         std::cout << "float: " << floatValue << "f" << std::endl;
     } catch (const std::exception&) {

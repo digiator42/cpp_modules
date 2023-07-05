@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <typeinfo>
 #include <ctime>
 
 class Base {
@@ -33,14 +34,17 @@ void identify(Base* p) {
 void identify(Base& p) {
     try {
         A& a = dynamic_cast<A&>(p);
+        (void)a;
         std::cout << "A" << std::endl;
     } catch (std::bad_cast&) {
         try {
             B& b = dynamic_cast<B&>(p);
+            (void)b;
             std::cout << "B" << std::endl;
         } catch (std::bad_cast&) {
             try {
                 C& c = dynamic_cast<C&>(p);
+                (void)c;
                 std::cout << "C" << std::endl;
             } catch (std::bad_cast&) {
                 std::cout << "Unknown" << std::endl;
@@ -50,7 +54,7 @@ void identify(Base& p) {
 }
 
 int main() {
-    std::srand(static_cast<unsigned>(std::time(nullptr)));
+    std::srand(static_cast<unsigned>(std::time(NULL)));
 
     Base* obj1 = generate();
     identify(obj1);
