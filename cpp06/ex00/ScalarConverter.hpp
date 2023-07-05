@@ -17,7 +17,7 @@ class ScalarConverter {
 
 		void convert(const std::string& literal);
 		bool isValidFormat(std::string s);
-		int _stoi(std::string s);
+		float _stoi(std::string s);
 		void toChar(std::string s);
 		void toInt(std::string s);
 		void toFloat(std::string s);

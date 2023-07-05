@@ -12,10 +12,10 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &obj){
     return *this;
 }
 
-int ScalarConverter::_stoi(std::string s)
+float ScalarConverter::_stoi(std::string s)
 {
     std::istringstream iss(s);
-    int value;
+    float value;
     if (!(iss >> value)) {
         // Failed to convert
         throw std::invalid_argument("Invalid conversion");
@@ -49,6 +49,16 @@ void ScalarConverter::convert(const std::string& literal) {
         std::cout << "double: " << literal << "\n";
         return;
     }
+    
+
+    if (literal.length() == 1 && std::isprint(literal[0])) { 
+        std::cout << "char: '" << literal << "'\n";
+        std::cout << "int: " << static_cast<int>(literal[0]) << "\n";
+        std::cout << "float: " << static_cast<int>(literal[0]) << "f\n";
+        std::cout << "double: " << static_cast<int>(literal[0]) << "\n";
+        return ;
+    }
+
     try {
         !isValidFormat(literal) ?
             throw std::invalid_argument("Invalid Input") : (void)0;
@@ -66,6 +76,10 @@ void ScalarConverter::toInt(std::string s)
 {
     // to int
     try {
+        if (s[s.length() - 1] == 'f')
+            s.pop_back();
+        if (_stoi(s) > INT_MAX || _stoi(s) < INT_MIN)
+            throw std::invalid_argument("Invalid conversion");
         int intValue = static_cast<int>(_stoi(s));
         std::cout << "int: " << intValue << std::endl;
     } catch (const std::exception&) {
@@ -94,8 +108,9 @@ void ScalarConverter::toFloat(std::string s)
 {
     // to float
 	try {
-        float floatValue = static_cast<float>(_stoi(s));
-        std::cout << "float: " << std::fixed << std::setprecision(1) << floatValue << "f" << std::endl;
+        s.pop_back();
+        float floatValue = _stoi(s);
+        std::cout << "float: " << floatValue << "f" << std::endl;
     } catch (const std::exception&) {
         std::cout << "float: Conversion not possible" << std::endl;
     }
@@ -105,7 +120,7 @@ void ScalarConverter::toDouble(std::string s)
 {
     // to double
     try {
-        double doubleValue = static_cast<double>(_stoi(s));
+        double doubleValue = atof(s.c_str());
         std::cout << "double: " << doubleValue << std::endl;
     } catch (const std::exception&) {
         std::cout << "double: Conversion not possible" << std::endl;
