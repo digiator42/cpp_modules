@@ -55,8 +55,8 @@ void ScalarConverter::convert(const std::string& literal) {
     if (isalpha(literal[0]) && literal.length() == 1) { 
         std::cout << "char: '" << literal << "'\n";
         std::cout << "int: " << static_cast<int>(literal[0]) << "\n";
-        std::cout << "float: " << static_cast<int>(literal[0]) << "f\n";
-        std::cout << "double: " << static_cast<int>(literal[0]) << "\n";
+        std::cout << "float: " << static_cast<float>(literal[0]) << "f\n";
+        std::cout << "double: " << static_cast<double>(literal[0]) << "\n";
         return ;
     }
 
