@@ -28,7 +28,7 @@ bool ScalarConverter::isValidFormat(std::string s)
     int dotCounter = 0;
     int fCounter = 0;
     for (size_t i = 0; i < s.length(); i++) {
-        if (i == 0 && (s[0] == '+' || s[0] == '-'))
+        if (s[0] == '+' || s[0] == '-')
             i++;
         if (s[i] == '.')
             dotCounter++;
@@ -73,9 +73,9 @@ void ScalarConverter::convert(const std::string& literal) {
     toDouble(literal);
 }
 
+// to int
 void ScalarConverter::toInt(std::string s)
 {
-    // to int
     try {
         if (s[s.length() - 1] == 'f')
             s.pop_back();
@@ -88,9 +88,9 @@ void ScalarConverter::toInt(std::string s)
     }
 
 }
+// to char
 void ScalarConverter::toChar(std::string s)
 {
-    // to char
     try {
         if (s[s.length() - 1] == 'f')
             s.pop_back();
@@ -107,9 +107,9 @@ void ScalarConverter::toChar(std::string s)
     }
 }
 
+// to float
 void ScalarConverter::toFloat(std::string s)
 {
-    // to float
 	try {
         float floatValue = atof(s.c_str());
         std::cout << "float: " << floatValue << "f" << std::endl;
@@ -118,9 +118,9 @@ void ScalarConverter::toFloat(std::string s)
     }
 }
 
+// to double
 void ScalarConverter::toDouble(std::string s)
 {
-    // to double
     try {
         double doubleValue = atof(s.c_str());
         std::cout << "double: " << doubleValue << std::endl;

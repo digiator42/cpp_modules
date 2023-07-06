@@ -8,6 +8,7 @@ int main(int argc, char** argv) {
 		std::cout << "Usage: ./convertor <literal>" << std::endl;
 		return 1;
 	}
+	
     ScalarConverter::convert(argv[1]);
     
     return 0;
