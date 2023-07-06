@@ -47,13 +47,12 @@ void ScalarConverter::convert(const std::string& literal) {
         || literal == "-inff" || literal == "+inff" || literal == "nanf") {
         std::cout << "char: impossible\n";
         std::cout << "int: impossible\n";
-        std::cout << "float: " << literal << "f\n";
-        std::cout << "double: " << literal << "\n";
+        toFloat(literal);
+        toDouble(literal);
         return;
     }
     
-
-    if ((literal.length() == 1 && std::isprint(literal[0])) || literal[0] == 0) { 
+    if (isalpha(literal[0]) && literal.length() == 1) { 
         std::cout << "char: '" << literal << "'\n";
         std::cout << "int: " << static_cast<int>(literal[0]) << "\n";
         std::cout << "float: " << static_cast<int>(literal[0]) << "f\n";
@@ -93,6 +92,8 @@ void ScalarConverter::toChar(std::string s)
 {
     // to char
     try {
+        if (s[s.length() - 1] == 'f')
+            s.pop_back();
         if (_stoi(s) > CHAR_MAX || _stoi(s) < CHAR_MIN)
             throw std::invalid_argument("Invalid conversion");
         char charValue = static_cast<char>(_stoi(s));
@@ -110,9 +111,7 @@ void ScalarConverter::toFloat(std::string s)
 {
     // to float
 	try {
-        if (s[s.length() - 1] == 'f')
-            s.pop_back();
-        float floatValue = _stoi(s);
+        float floatValue = atof(s.c_str());
         std::cout << "float: " << floatValue << "f" << std::endl;
     } catch (const std::exception&) {
         std::cout << "float: Conversion not possible" << std::endl;
