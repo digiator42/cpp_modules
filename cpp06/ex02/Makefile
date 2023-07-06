@@ -1,6 +1,6 @@
 NAME = convertor
 
-SRCS = dynamic.cpp
+SRCS = dynamic.cpp main.cpp
 
 CXX = c++
 

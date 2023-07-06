@@ -5,7 +5,11 @@
 #include <iomanip>
 #include <string>
 #include <climits>
+#include <string>
+#include <vector>
+#include <cstdlib>
 #include <sstream>
+
 
 class ScalarConverter {
 	private:

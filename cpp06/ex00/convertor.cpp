@@ -78,7 +78,7 @@ void ScalarConverter::toInt(std::string s)
 {
     try {
         if (s[s.length() - 1] == 'f')
-            s.pop_back();
+            s.erase(s.length() - 1);
         if (_stoi(s) > INT_MAX || _stoi(s) < INT_MIN)
             throw std::invalid_argument("Invalid conversion");
         int intValue = static_cast<int>(_stoi(s));
@@ -93,7 +93,7 @@ void ScalarConverter::toChar(std::string s)
 {
     try {
         if (s[s.length() - 1] == 'f')
-            s.pop_back();
+            s.erase(s.length() - 1);
         if (_stoi(s) > CHAR_MAX || _stoi(s) < CHAR_MIN)
             throw std::invalid_argument("Invalid conversion");
         char charValue = static_cast<char>(_stoi(s));

@@ -1,16 +1,4 @@
-#include <iostream>
-#include <cstdlib>
-#include <typeinfo>
-#include <ctime>
-
-class Base {
-public:
-    virtual ~Base() {}
-};
-
-class A : public Base {};
-class B : public Base {};
-class C : public Base {};
+#include "dynamic.hpp"
 
 Base* generate() {
     int random = std::rand() % 3;
@@ -51,18 +39,4 @@ void identify(Base& p) {
             }
         }
     }
-}
-
-int main() {
-    std::srand(static_cast<unsigned>(std::time(NULL)));
-
-    Base* obj1 = generate();
-    identify(obj1);
-    delete obj1;
-
-    Base* obj2 = generate();
-    identify(*obj2);
-    delete obj2;
-
-    return 0;
 }
