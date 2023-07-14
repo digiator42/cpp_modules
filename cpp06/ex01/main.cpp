@@ -1,23 +1,23 @@
 #include "serialize.hpp"
 
-using namespace std;
-
 int main() {
-    // data_t originalData;
-    // data_t* ptr = &originalData;
-    // ptr->str = "Hello, world!";
+    data_t originalData;
+    data_t* ptr = &originalData;
+    ptr->str = "Hello, world!";
 
-    // uintptr_t serialized = Serializer::serialize(ptr);
-    // data_t* deserialized = Serializer::deserialize(serialized);
+    uintptr_t serialized = Serializer::serialize(ptr);
+    data_t* deserialized = Serializer::deserialize(serialized);
 
-    // std::cout << "Original data: " << ptr->str << std::endl;
+    std::cout << "Original data: " << ptr->str << std::endl;
 
-    // if (ptr == deserialized) {
-    //     std::cout << "Deserialization successful. Pointers match." << std::endl;
-    // } else {
-    //     std::cout << "Deserialization failed. Pointers do not match." << std::endl;
-    // }
-
+    if (ptr == deserialized) {
+        std::cout << "Deserialization successful. Pointers match." << std::endl;
+    } else {
+        std::cout << "Deserialization failed. Pointers do not match." << std::endl;
+    }
+    
+    
+    std::endl(std::cout);
 
     data_t foo;
     uintptr_t reinterpreted;
@@ -25,20 +25,15 @@ int main() {
     foo.str = std::string("test");
     reinterpreted = Serializer::serialize(&foo);
 
-    cout << "OG foo (Data) Address = " << &foo << endl
-         << "str value = " << foo.str << endl;
+    std::cout << "foo Address = " << &foo << std::endl;
+    std::cout << "str value = " << foo.str << std::endl;
+    std::cout << "Reinterpreted foo value = " << reinterpreted << std::endl;
 
-    cout << endl;
+    data_t *deserialized2;
 
-    cout << "Reinterpreted foo value = " << reinterpreted << endl;
+    deserialized2 = Serializer::deserialize(reinterpreted);
 
-    cout << endl;
-
-    data_t *deserialized;
-
-    deserialized = Serializer::deserialize(reinterpreted);
-
-    cout << "Deserialized Address = " << deserialized << endl
-         << "str value = " << deserialized->str << endl;
+    std::cout << "Deserialized2 Address = " << deserialized2 << std::endl;
+    std::cout << "str value = " << deserialized2->str << std::endl;
     return 0;
 }
