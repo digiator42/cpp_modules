@@ -1,19 +1,10 @@
 #ifndef DYNAMIC_HPP
 #define DYNAMIC_HPP
 
-#include <iostream>
-#include <cstdlib>
-#include <typeinfo>
-#include <ctime>
-
-class Base {
-public:
-    virtual ~Base() {}
-};
-
-class A : public Base {};
-class B : public Base {};
-class C : public Base {};
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 Base* generate();
 void identify(Base* p);

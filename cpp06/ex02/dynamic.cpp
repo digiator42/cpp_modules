@@ -1,4 +1,4 @@
-#include "dynamic.hpp"
+#include "Dynamic.hpp"
 
 Base* generate() {
     int random = std::rand() % 3;
