@@ -4,6 +4,8 @@
 #include "Data.hpp"
 #include <iostream>
 #include <cstdint>
+# include <string>
+
 
 class Serializer {
 public:

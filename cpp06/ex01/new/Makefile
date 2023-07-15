@@ -1,6 +1,6 @@
-NAME = serialize
+NAME = dynamic
 
-SRCS = main.cpp Serialize.cpp
+SRCS = main.cpp Serialization.cpp
 
 CXX = c++
 
