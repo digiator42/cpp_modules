@@ -4,7 +4,7 @@
 # include <string>
 
 typedef	struct s_data {
-	std::string dummy_str;
+	std::string str;
 }				data_t;
 
 #endif
