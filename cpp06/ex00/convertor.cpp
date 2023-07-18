@@ -118,9 +118,11 @@ void ScalarConverter::toChar(std::string s)
 void ScalarConverter::toFloat(std::string s)
 {
 	try {
-        double floatValue = _stoi(s.c_str());
+        double floatValue = atof(s.c_str());
         if (floatValue < -std::numeric_limits<float>::max() || floatValue > std::numeric_limits<float>::max())
             throw std::invalid_argument("max");
+        !(floatValue - static_cast<int>(floatValue)) ?
+            std::cout << "float: " << floatValue << ".0f" << std::endl : 
         std::cout << "float: " << floatValue << "f" << std::endl;
     } catch (const std::exception&) {
         std::cout << "float: Conversion not possible" << std::endl;
@@ -132,6 +134,8 @@ void ScalarConverter::toDouble(std::string s)
 {
     try {
         double doubleValue = atof(s.c_str());
+        !(doubleValue - static_cast<int>(doubleValue)) ?
+            std::cout << "float: " << doubleValue << ".0f" << std::endl :
         std::cout << "double: " << doubleValue << std::endl;
     } catch (const std::exception&) {
         std::cout << "double: Conversion not possible" << std::endl;
