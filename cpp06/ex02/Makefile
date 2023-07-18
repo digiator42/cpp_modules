@@ -1,6 +1,6 @@
 NAME = dynamic
 
-SRCS = Dynamic.cpp Base.cpp main.cpp
+SRCS = main.cpp Dynamic.cpp Base.cpp 
 
 CXX = c++
 

@@ -12,10 +12,10 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &obj){
     return *this;
 }
 
-float ScalarConverter::_stoi(std::string s)
+double ScalarConverter::_stoi(std::string s)
 {
     std::istringstream iss(s);
-    float value;
+    double value;
     if (!(iss >> value)) {
         // Failed to convert
         throw std::invalid_argument("Invalid conversion");
@@ -41,22 +41,29 @@ bool ScalarConverter::isValidFormat(std::string s)
 }
 
 
-void ScalarConverter::convert(const std::string& literal) {
+void ScalarConverter::convert(std::string& literal) {
 
-    if (literal == "nan" || literal == "-inf" || literal == "+inf" 
-        || literal == "-inff" || literal == "+inff" || literal == "nanf") {
+    if (literal == "nan" || literal == "-inf" || literal == "+inf") {
         std::cout << "char: impossible\n";
         std::cout << "int: impossible\n";
-        toFloat(literal);
-        toDouble(literal);
+        std::cout << "float: " << literal << "f\n";
+        std::cout << "double: " << literal << "\n";
+        return;
+    }
+    if (literal == "-inff" || literal == "+inff" || literal == "nanf") {
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        std::cout << "float: " << literal << "\n";
+        literal.erase(literal.length() - 1);
+        std::cout << "double: " << literal << "\n";
         return;
     }
     
     if (isalpha(literal[0]) && literal.length() == 1) { 
         std::cout << "char: '" << literal << "'\n";
         std::cout << "int: " << static_cast<int>(literal[0]) << "\n";
-        std::cout << "float: " << static_cast<float>(literal[0]) << "f\n";
-        std::cout << "double: " << static_cast<double>(literal[0]) << "\n";
+        std::cout << "float: " << static_cast<float>(literal[0]) << ".0" << "f\n";
+        std::cout << "double: " << static_cast<double>(literal[0]) << ".0" << "\n";
         return ;
     }
 
@@ -79,7 +86,7 @@ void ScalarConverter::toInt(std::string s)
     try {
         if (s[s.length() - 1] == 'f')
             s.erase(s.length() - 1);
-        if (_stoi(s) > INT_MAX || _stoi(s) < INT_MIN)
+        if (_stoi(s) < std::numeric_limits<int>::min() || _stoi(s) > std::numeric_limits<int>::max())
             throw std::invalid_argument("Invalid conversion");
         int intValue = static_cast<int>(_stoi(s));
         std::cout << "int: " << intValue << std::endl;
@@ -94,7 +101,7 @@ void ScalarConverter::toChar(std::string s)
     try {
         if (s[s.length() - 1] == 'f')
             s.erase(s.length() - 1);
-        if (_stoi(s) > CHAR_MAX || _stoi(s) < CHAR_MIN)
+        if (_stoi(s) < std::numeric_limits<char>::min() || _stoi(s) > std::numeric_limits<char>::max())
             throw std::invalid_argument("Invalid conversion");
         char charValue = static_cast<char>(_stoi(s));
         if (isprint(charValue)) {
@@ -111,7 +118,9 @@ void ScalarConverter::toChar(std::string s)
 void ScalarConverter::toFloat(std::string s)
 {
 	try {
-        float floatValue = atof(s.c_str());
+        double floatValue = _stoi(s.c_str());
+        if (floatValue < -std::numeric_limits<float>::max() || floatValue > std::numeric_limits<float>::max())
+            throw std::invalid_argument("max");
         std::cout << "float: " << floatValue << "f" << std::endl;
     } catch (const std::exception&) {
         std::cout << "float: Conversion not possible" << std::endl;

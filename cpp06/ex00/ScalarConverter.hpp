@@ -4,9 +4,8 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <climits>
+#include <limits>
 #include <string>
-#include <vector>
 #include <cstdlib>
 #include <sstream>
 
@@ -18,14 +17,14 @@ class ScalarConverter {
 		ScalarConverter &operator=(ScalarConverter const &obj);
 		~ScalarConverter();
 		static bool isValidFormat(std::string s);
-		static float _stoi(std::string s);
+		static double _stoi(std::string s);
 		static void toChar(std::string s);
 		static void toInt(std::string s);
 		static void toFloat(std::string s);
 		static void toDouble(std::string s);
 
 	public:
-		static void convert(const std::string& literal);
+		static void convert(std::string& literal);
 };
 
 #endif
