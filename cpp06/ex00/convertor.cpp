@@ -119,7 +119,7 @@ void ScalarConverter::toFloat(std::string s)
 {
 	try {
         double floatValue = atof(s.c_str());
-        if (floatValue < -std::numeric_limits<float>::max() || floatValue > std::numeric_limits<float>::max())
+        if (floatValue < std::numeric_limits<float>::min() || floatValue > std::numeric_limits<float>::max())
             throw std::invalid_argument("max");
         !(floatValue - static_cast<int>(floatValue)) ?
             std::cout << "float: " << floatValue << ".0f" << std::endl : 
