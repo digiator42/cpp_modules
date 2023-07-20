@@ -1,11 +1,11 @@
 #include "Serialize.hpp"
 #include <iostream>
 
-
 int main() {
     data_t originalData;
     data_t* ptr = &originalData;
-    // ptr->str = "Hello, world!";
+
+    ptr->str = "Hello, world!";
 
     uintptr_t serialized = Serializer::serialize(ptr);
     data_t* deserialized = Serializer::deserialize(serialized);
@@ -37,3 +37,4 @@ int main() {
     std::cout << "Deserialized2 Address = " << deserialized2 << std::endl;
     return 0;
 }
+

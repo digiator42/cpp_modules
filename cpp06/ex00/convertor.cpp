@@ -135,7 +135,7 @@ void ScalarConverter::toDouble(std::string s)
     try {
         double doubleValue = atof(s.c_str());
         !(doubleValue - static_cast<int>(doubleValue)) ?
-            std::cout << "float: " << doubleValue << ".0f" << std::endl :
+            std::cout << "float: " << doubleValue << ".0" << std::endl :
         std::cout << "double: " << doubleValue << std::endl;
     } catch (const std::exception&) {
         std::cout << "double: Conversion not possible" << std::endl;

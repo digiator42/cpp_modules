@@ -24,17 +24,17 @@ void identify(Base& p) {
         A& a = dynamic_cast<A&>(p);
         (void)a;
         std::cout << "A" << std::endl;
-    } catch (std::bad_cast&) {
+    } catch (std::exception&) {
         try {   
             B& b = dynamic_cast<B&>(p);
             (void)b;
             std::cout << "B" << std::endl;
-        } catch (std::bad_cast&) {
+        } catch (std::exception&) {
             try {
                 C& c = dynamic_cast<C&>(p);
                 (void)c;
                 std::cout << "C" << std::endl;
-            } catch (std::bad_cast&) {
+            } catch (std::exception&) {
                 std::cout << "Unknown" << std::endl;
             }
         }

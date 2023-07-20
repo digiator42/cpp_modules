@@ -15,7 +15,6 @@ int main() {
         identify(*arr[i]);
         delete arr[i];
     }
-
     return 0;
 }
 
