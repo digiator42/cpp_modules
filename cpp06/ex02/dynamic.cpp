@@ -25,7 +25,7 @@ void identify(Base& p) {
         (void)a;
         std::cout << "A" << std::endl;
     } catch (std::bad_cast&) {
-        try {
+        try {   
             B& b = dynamic_cast<B&>(p);
             (void)b;
             std::cout << "B" << std::endl;
