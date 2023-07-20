@@ -1,3 +1,6 @@
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
+
 #include <iostream>
 #include <exception>
 
@@ -9,46 +12,20 @@ private:
 
 public:
 
-    Array() : elements(NULL), length(0) {}
-
-    Array(unsigned int n) : length(n) {
-        elements = new T[length];
-    }
-
-    Array(const Array& other) : length(other.length) {
-        elements = new T[length];
-        for (unsigned int i = 0; i < length; i++) {
-            elements[i] = other.elements[i];
-        }
-    }
-
-    Array& operator=(const Array& other) {
-        if (this != &other) {
-            delete[] elements;
-            length = other.length;
-            elements = new T[length];
-            for (unsigned int i = 0; i < length; i++) {
-                elements[i] = other.elements[i];
-            }
-        }
-        return *this;
-    }
+    Array();
+    Array(unsigned int n);
+    Array(const Array& other);
+    Array& operator=(const Array& other);
 
     // Destructor
-    ~Array() {
-        delete[] elements;
-    }
+    ~Array();
 
     // Subscript operator
-    T& operator[](unsigned int index) {
-        if (index >= length) {
-            throw std::exception();
-        }
-        return elements[index];
-    }
+    T& operator[](unsigned int index);
 
     // Size function
-    unsigned int size() const {
-        return length;
-    }
+    unsigned int size() const;
 };
+
+
+#endif

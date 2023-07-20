@@ -1,6 +1,6 @@
 NAME = array
 
-SRCS = array.cpp
+SRCS = main.cpp Array.cpp 
 
 CXX = c++
 
