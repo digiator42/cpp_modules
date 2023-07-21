@@ -28,4 +28,6 @@ public:
 };
 
 
+#include "Array.tpp"
+
 #endif

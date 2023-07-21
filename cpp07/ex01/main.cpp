@@ -4,6 +4,12 @@ int main() {
     int intArray[] = {1, 2, 3, 4, 5};
     size_t intArrayLength = sizeof(intArray) / sizeof(int);
 
+    std::string strArray[] = {"Does", "this", "work", "?\n"};
+    size_t strArrayLength = strArray->length();
+
+    std::cout << "Printing strArray: ";
+    iter(strArray, strArrayLength, printElement<std::string>);
+    
     std::cout << "Printing intArray: ";
     iter(intArray, intArrayLength, printElement<int>);
     std::cout << std::endl;
