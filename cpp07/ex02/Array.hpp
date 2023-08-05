@@ -17,13 +17,11 @@ public:
     Array(const Array& other);
     Array& operator=(const Array& other);
 
-    // Destructor
     ~Array();
 
-    // Subscript operator
     T& operator[](unsigned int index);
+    T& operator[](unsigned int index) const;
 
-    // Size function
     unsigned int size() const;
 };
 
