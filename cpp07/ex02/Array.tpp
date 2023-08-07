@@ -40,7 +40,7 @@ Array<T>::~Array() {
 template<typename T>
 T& Array<T>::operator[](unsigned int index) {
     if (index >= length) {
-        throw std::runtime_error("out of range");
+        throw std::exception();
     }
     return elements[index];
 }
@@ -48,7 +48,7 @@ T& Array<T>::operator[](unsigned int index) {
 template<typename T>
 T& Array<T>::operator[](unsigned int index) const{
     if (index >= length) {
-        throw std::runtime_error("out of range");
+        throw std::exception();
     }
     return elements[index];
 }

@@ -4,7 +4,7 @@ int main() {
 
     try {
 
-        Array<int> arr1(5);
+        Array<int> const arr1(5);
         for (unsigned int i = 0; i < arr1.size(); i++) {
             arr1[i] = i + 1;
         }
