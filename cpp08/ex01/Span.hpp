@@ -8,9 +8,9 @@ class Span
 {
 private:
 	unsigned int _N;
-	std::vector<int> _vec;
 
 public:
+	std::vector<int> _vec;
 	Span();
 	Span(unsigned int N);
 	Span(const Span &copy);

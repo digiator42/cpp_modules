@@ -4,7 +4,7 @@ SRCS = main.cpp Span.cpp
 
 CXX = c++
 
-CXXFLAGS  = -std=c++98 -Wall -Wextra -Werror -g3
+CXXFLAGS  = -std=c++98 -Wall -Wextra -Werror -g3 #-D DEBUG=1
 
 OBJS = $(SRCS:.cpp=.o)
 

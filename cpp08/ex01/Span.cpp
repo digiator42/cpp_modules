@@ -37,12 +37,12 @@ int Span::shortestSpan() {
 	if (_vec.size() <= 1)
 		throw NoSpanException();
 
-
-	int shortestDistance = _vec[0] - _vec[1];
-    for (size_t i = 0; i < _vec.size(); ++i) {
-
-        if (std::abs(_vec[0] - _vec[i+1]) < shortestDistance) {
-            shortestDistance = std::abs(_vec[0] - _vec[i+1]);
+	std::sort(_vec.begin(), _vec.end());
+	int shortestDistance = _vec[1] - _vec[0];
+    for (size_t i = 0; i < _vec.size() - 1; ++i) {
+		// if(std::find(_vec.begin(), _vec.end(), _vec[i+1]) != _vec.end())
+        	if (std::abs(_vec[i+1] - _vec[i]) < shortestDistance) {
+            	shortestDistance = std::abs(_vec[i+1] - _vec[i]);
         }
     }
 	return shortestDistance;
