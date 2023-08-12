@@ -1,5 +1,8 @@
-#include "Easyfind.hpp"
+#include "easyfind.hpp"
 #include <vector>
+#include <iterator>
+#include <iostream>
+
 int main() {
 
 	std::vector<int> vector;
@@ -12,23 +15,32 @@ int main() {
 		vector.push_back(i);
 		list.push_front(vector[i]);
 		set.insert(vector[i++]);
-		map.insert(std::make_pair(i, "hello " + std::to_string(i)));
+		std::string s(1, '0' + i);
+		map.insert(std::make_pair(i, "hello " + s));
 	}
 
 	try {
 
-		std::vector<int>::iterator v = easyFind(vector, --i);
-		std::cout << *v << std::endl;
+		if (easyFind(vector, --i))
+			std::cout << vector.at(i) << std::endl;
 
-		std::list<int>::iterator l = easyFind(list, i);
-		std::cout << *l << std::endl;
-		
-		std::set<int>::iterator seit = easyFind(set, i);
-		std::cout << *seit << std::endl;
+		if (easyFind(list, i)) {
+			std::list<int>::iterator lit = list.begin();
+			for (int j = 0; j < i; ++j) {
+    			++lit;
+			}
+			std::cout << *lit << std::endl;
+		}
+
+		if(easyFind(set, i)) {
+			std::set<int>::iterator sit = set.begin();
+			std::advance(sit, i);
+			std::cout << *sit << std::endl;
+		}
 
 
-		std::map<int, std::string>::iterator s = easyFind(map, i);
-		std::cout << s->first << " " << s->second << std::endl;
+		if (easyFind(map, i))
+			std::cout << map.at(i) << std::endl;
 
 	} catch(std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
