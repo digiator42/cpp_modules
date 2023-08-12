@@ -5,8 +5,16 @@ int main()
 {
 
 	try {
-		std::srand(time(NULL));
+		Span sp1 = Span(5);
+		sp1.addNumber(6);
+		sp1.addNumber(3);
+		sp1.addNumber(17);
+		sp1.addNumber(9);
+		sp1.addNumber(11);
+		std::cout << sp1.shortestSpan() << std::endl;
+		std::cout << sp1.longestSpan() << std::endl;
 
+		std::srand(time(NULL));
 		std::vector<int> vec;
 
 		for (size_t i = 0; i < 10000; i++)
@@ -28,10 +36,8 @@ int main()
 		
 		sp.addNumber(20000);
 		sp.addNumber(vec.begin() + vec.size() / 2, vec.end());
-		std::cout << std::endl;
 
 		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << std::endl;
 
 		#ifdef DEBUG
 		for (size_t i = 0; i < sp._vec.size(); i++)
@@ -41,7 +47,6 @@ int main()
 		std::cout << std::endl;
 		#endif
 
-		std::cout << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
