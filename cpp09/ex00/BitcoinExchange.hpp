@@ -17,18 +17,18 @@
 #include <cstdlib>
 
 
-class Btc
+class BitcoinExchange
 {
 private:
     std::map<std::string, float> map;
     char *filePath;
 
 public:
-    Btc();
-    Btc(char *filePath);
-    ~Btc();
-	Btc(const Btc& copy);
-	Btc& operator=(const Btc & other);
+    BitcoinExchange();
+    BitcoinExchange(char *filePath);
+    ~BitcoinExchange();
+	BitcoinExchange(const BitcoinExchange& copy);
+	BitcoinExchange& operator=(const BitcoinExchange & other);
 
     void    printMap();
     void    displayData();

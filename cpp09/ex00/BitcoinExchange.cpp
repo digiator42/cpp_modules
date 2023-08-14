@@ -1,8 +1,8 @@
 #include "BitcoinExchange.hpp"
 
-Btc::Btc() {}
+BitcoinExchange::BitcoinExchange() {}
 
-Btc::Btc(char *filePath) {
+BitcoinExchange::BitcoinExchange(char *filePath) {
     char        buffer[1024] = {0};
 
     if (strcmp(filePath, "input.txt") != 0) {
@@ -23,13 +23,13 @@ Btc::Btc(char *filePath) {
     }
 }
 
-Btc::~Btc() {}
+BitcoinExchange::~BitcoinExchange() {}
 
-Btc::Btc(const Btc &copy) {
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
     *this = copy;
 }
 
-Btc& Btc::operator=(const Btc & other) {
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange & other) {
 	if (this != &other) {
 		this->map = other.map;
         this->filePath = other.filePath;
@@ -37,7 +37,7 @@ Btc& Btc::operator=(const Btc & other) {
     return *this;
 }
 
-void    Btc::printMap(void) {
+void    BitcoinExchange::printMap(void) {
 
    std::map <std::string, float>::iterator it;
 
@@ -48,7 +48,7 @@ void    Btc::printMap(void) {
 }
 
 
-void    Btc::displayData() {
+void    BitcoinExchange::displayData() {
     char            buffer[1024];
     std::string     dateString;
     std::string     digitString;
