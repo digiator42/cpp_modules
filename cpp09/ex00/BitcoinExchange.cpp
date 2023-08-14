@@ -63,12 +63,16 @@ void    BitcoinExchange::displayData() {
     while(fin.getline(buffer, 1024))
     {
         std::string buff(buffer);
-
+        if (buff.find("|") != std::string::npos)
+            if (buff.substr(buff.find("|") + 1, buff.length() - 1).find("|") != std::string::npos) {
+                std::cout << "Bad input: " << buff << std::endl;
+                continue;
+            }
         if (buff.find("|") == std::string::npos) {
             std::cout << "Bad input: " << buff << std::endl;
             continue;
         }
-        else if (buff.find_first_not_of("|") == std::string::npos) {
+        else if (buff.find_first_not_of("0123456789-| ") != std::string::npos) {
             std::cout << "Bad input: " << buff << std::endl;
             continue;
         }
@@ -84,7 +88,6 @@ void    BitcoinExchange::displayData() {
                 continue;
             }
         }
-
             std::string         Date;
             float               Digit;
 
