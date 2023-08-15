@@ -63,11 +63,12 @@ void    BitcoinExchange::displayData() {
     while(fin.getline(buffer, 1024))
     {
         std::string buff(buffer);
-        if (buff.find("|") != std::string::npos)
-            if (buff.substr(buff.find("|") + 1, buff.length() - 1).find("|") != std::string::npos) {
-                std::cout << "Bad input: " << buff << std::endl;
-                continue;
-            }
+        std::string tmp(buffer);
+        // if (tmp.find("|") != std::string::npos)
+        //     if (tmp.substr(tmp.find("|") + 1, tmp.length() - 1).find("|") != std::string::npos) {
+        //         std::cout << "Bad input: " << tmp << std::endl;
+        //         continue;
+        //     }
         if (buff.find("|") == std::string::npos) {
             std::cout << "Bad input: " << buff << std::endl;
             continue;
