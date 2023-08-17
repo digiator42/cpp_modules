@@ -4,6 +4,7 @@
 #include <ctime>
 #include <vector>
 
+
 PmergeMe::PmergeMe(void) {};
 
 PmergeMe::PmergeMe(const PmergeMe& to_copy) {
@@ -44,6 +45,34 @@ static std::vector<unsigned int> sortVec(std::vector<unsigned int>& left, std::v
     return result;
 }
 
+
+static std::set<unsigned int> sortSet(std::set<unsigned int>& left, std::set<unsigned int>& right) {
+    
+    std::set<unsigned int> result;
+
+    while (!left.empty() && !right.empty()) {
+        if (*left.begin() <= *right.begin()) {
+            result.insert(*left.begin());
+            left.erase(left.begin());
+            continue;
+        }
+        result.insert(*right.begin());
+        right.erase(right.begin());
+    }
+
+    while (!left.empty()) {
+        result.insert(*left.begin());
+        left.erase(left.begin());
+    }
+
+    while (!right.empty()) {
+        result.insert(*right.begin());
+        right.erase(right.begin());
+    }
+
+    return result;
+}
+
 std::vector<unsigned int> PmergeMe::mergeVec(std::vector<unsigned int>& vec) {
 
     if (vec.size() <= 1) {
@@ -58,4 +87,24 @@ std::vector<unsigned int> PmergeMe::mergeVec(std::vector<unsigned int>& vec) {
     right = mergeVec(right);
 
     return sortVec(left, right);
+}
+
+std::set<unsigned int> PmergeMe::mergeVec(std::set<unsigned int>& set) {
+
+    if (set.size() <= 1) {
+        return set;
+    }
+
+    int mid = set.size() / 2;
+    std::set<unsigned int>::iterator sit = set.begin();
+    std::set<unsigned int>::iterator sit2 = sit;
+    for (int i = 0; i <= mid; i++)
+        sit++;
+    std::set<unsigned int> left(sit2, sit);
+    std::set<unsigned int> right(sit, set.end());
+
+    left = mergeVec(left);
+    right = mergeVec(right);
+
+    return sortSet(left, right);
 }

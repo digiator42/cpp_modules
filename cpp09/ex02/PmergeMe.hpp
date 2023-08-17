@@ -6,6 +6,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <set>
+
 
 
 class PmergeMe {
@@ -17,6 +19,7 @@ class PmergeMe {
         ~PmergeMe(void);
 
         std::vector<unsigned int> mergeVec(std::vector<unsigned int>& vec);
+        std::set<unsigned int> mergeVec(std::set<unsigned int>& set);
 
 };
 
