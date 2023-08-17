@@ -1,9 +1,8 @@
+#include "PmergeMe.hpp"
 #include <iostream>
 #include <algorithm>
 #include <ctime>
 #include <vector>
-#include <list>
-#include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe(void) {};
 
@@ -18,32 +17,27 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& to_copy) {
 
 PmergeMe::~PmergeMe(void) {};
 
-static std::vector<unsigned int> mergeVecs(std::vector<unsigned int>& left, std::vector<unsigned int>& right)
+static std::vector<unsigned int> sortVec(std::vector<unsigned int>& left, std::vector<unsigned int>& right)
 {
     std::vector<unsigned int> result;
 
-    while (!left.empty() && !right.empty())
-	{
+    while (!left.empty() && !right.empty()) {
         if (left.front() <= right.front())
 		{
             result.push_back(left.front());
             left.erase(left.begin());
+            continue;
         }
-		else
-		{
-            result.push_back(right.front());
-            right.erase(right.begin());
-        }
+        result.push_back(right.front());
+        right.erase(right.begin());
     }
 
-    while (!left.empty())
-	{
+    while (!left.empty()) {
         result.push_back(left.front());
         left.erase(left.begin());
     }
 
-    while (!right.empty())
-	{
+    while (!right.empty()) {
         result.push_back(right.front());
         right.erase(right.begin());
     }
@@ -63,7 +57,5 @@ std::vector<unsigned int> PmergeMe::mergeVec(std::vector<unsigned int>& vec) {
     left = mergeVec(left);
     right = mergeVec(right);
 
-    return mergeVecs(left, right);
+    return sortVec(left, right);
 }
-
-
