@@ -97,12 +97,15 @@ std::set<unsigned int> PmergeMe::mergeVec(std::set<unsigned int>& set) {
 
     int mid = set.size() / 2;
     std::set<unsigned int>::iterator sit = set.begin();
-    std::set<unsigned int>::iterator sit2 = sit;
-    for (int i = 0; i <= mid; i++)
-        sit++;
-    std::set<unsigned int> left(sit2, sit);
-    std::set<unsigned int> right(sit, set.end());
 
+    std::set<unsigned int> left;
+    std::set<unsigned int> right;
+
+    for (int i = 0; i < mid; i++)
+        left.insert(*sit++);
+    for (int i = mid; i < (int)set.size(); i++)
+        right.insert(*sit++);
+    
     left = mergeVec(left);
     right = mergeVec(right);
 
