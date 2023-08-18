@@ -9,6 +9,7 @@ RPN::RPN(const RPN &copy) {
 }
 
 RPN& RPN::operator=(const RPN & other) {
+    (void)other;
     return *this;
 }
 
@@ -18,13 +19,13 @@ void    RPN::execute(char *expression) {
     int                 digit;
 
     std::stringstream ss(expression);
-
+    input = expression;
+    if (input.find_first_not_of("0123456789 -+*/") != std::string::npos)
+        throw std::runtime_error("Invalid expression");
     while (ss >> input) {
         if (input == "+" || input == "-" || input == "*" || input == "/") {
-            if (stack.size() < 2) {
-                std::cerr << "Error: invalid expression " << std::endl;
-                exit(1);
-            }
+            if (stack.size() < 2)
+                throw std::runtime_error("Error: invalid expression ");
 
             int firstInt = stack.top();
             stack.pop();
@@ -41,10 +42,6 @@ void    RPN::execute(char *expression) {
             else if (input == "/")
                 stack.push(firstInt / secondInt);
 
-        }
-        else if (input == "(" || input == ")") {
-            std::cerr << "Error: Bad input " << std::endl;
-            exit(1);
         }
         else if (isdigit(input[0])) {
             digit = atoi(input.c_str());
