@@ -1,6 +1,5 @@
 #include "PmergeMe.hpp"
 
-
 template<typename Container>
 static void printCont(Container &con) {
     typename Container::iterator itr; 
@@ -16,14 +15,21 @@ static bool isSorted(Container &con) {
     typename Container::iterator itr2;
     for (itr = con.begin(); itr != con.end(); ++itr)
     {
-        for (itr2 = std::next(itr); itr2 != con.end(); itr2++)
-            if (*itr >= *itr2)
+        for (itr2 = std::next(itr); itr2 != con.end(); itr2++) // not in cpp 98
+            if (*itr > *itr2)
 		        return false;
     }
     return true;
 }
 
+static void timeElapsed(std::clock_t start, int count, bool vec) { 
 
+    double duration = static_cast<double>(std::clock() - start) / CLOCKS_PER_SEC * 1000;
+
+	std::cout << "Time to process a range of " << count << " elements " << 
+        (!vec ? "with std::list<unsigned int> : " :  "with std::vector<unsigned int> :")
+        << duration << " us" << std::endl;
+}
 
 int main(int argc, char **argv)
 {
@@ -45,7 +51,7 @@ int main(int argc, char **argv)
         }
         for (int i = 1; i < argc; i += 1)
             vec.push_back(std::atoi(argv[i]));
-        printCont(vec);
+        // printCont(vec);
     }
     catch (std::exception& e) {
         std::cerr << e.what() << '\n';
@@ -54,15 +60,19 @@ int main(int argc, char **argv)
     std::vector<unsigned int> uVector(vec.begin(), vec.end());
     std::list<unsigned int> notSortedList(vec.begin(), vec.end());
 
+    std::clock_t start = std::clock();
     std::vector<unsigned int> sortedVec =  pmm.mergeVec(uVector);
+    timeElapsed(start, argc-1, true);
     std::cout <<  std::endl;
-    printCont(sortedVec);
+    // printCont(sortedVec);
 
     std::cout << "\n--------\n";
 
+    start = std::clock();
 
     std::list<unsigned int> sortedList =  pmm.mergeVec(notSortedList);
-    printCont(sortedList);
+    timeElapsed(start, argc-1, false);
+    // printCont(sortedList);
     std::cout <<  std::endl;
     std::cout << "vec " << (isSorted(sortedVec) ? "YES" : "NO") << std::endl;
     std::cout << "list " << (isSorted(sortedList) ? "YES" : "NO") << std::endl;

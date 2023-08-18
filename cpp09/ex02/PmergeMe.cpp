@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <ctime>
 #include <vector>
+#include <list>
 
 
 PmergeMe::PmergeMe(void) {};
@@ -18,8 +19,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& to_copy) {
 
 PmergeMe::~PmergeMe(void) {};
 
-static std::vector<unsigned int> sortVec(std::vector<unsigned int>& left, std::vector<unsigned int>& right)
-{
+static std::vector<unsigned int> sortVec(std::vector<unsigned int>& left, std::vector<unsigned int>& right) {
     std::vector<unsigned int> result;
 
     while (!left.empty() && !right.empty()) {
@@ -46,7 +46,7 @@ static std::vector<unsigned int> sortVec(std::vector<unsigned int>& left, std::v
 }
 
 
-static std::list<unsigned int> sortSet(std::list<unsigned int>& left, std::list<unsigned int>& right) {
+static std::list<unsigned int> sortList(std::list<unsigned int>& left, std::list<unsigned int>& right) {
     
     std::list<unsigned int> result;
 
@@ -80,7 +80,7 @@ std::vector<unsigned int> PmergeMe::mergeVec(std::vector<unsigned int>& vec) {
     }
 
     int mid = vec.size() / 2;
-    std::vector<unsigned int> left(vec.begin(), vec.begin() + mid);
+    std::vector<unsigned int> left (vec.begin(), vec.begin() + mid);
     std::vector<unsigned int> right(vec.begin() + mid, vec.end());
 
     left = mergeVec(left);
@@ -109,5 +109,5 @@ std::list<unsigned int> PmergeMe::mergeVec(std::list<unsigned int>& list) {
     left = mergeVec(left);
     right = mergeVec(right);
 
-    return sortSet(left, right);
+    return sortList(left, right);
 }
