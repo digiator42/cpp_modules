@@ -29,13 +29,20 @@ int main(int argc, char **argv)
 {
 	if (argc == 1)
 	    return EXIT_SUCCESS;
+
     PmergeMe pmm;
     std::vector<unsigned int> vec;
+    std::string arg;
+
     try {
         for (int i = 1; i < argc; i += 1)
+        {
+            std::istringstream ss(argv[i]);
             if (std::string(argv[i]).find_first_not_of("0123456789 ") != std::string::npos)
 			    throw std::invalid_argument("Invalid input");
-
+            if (!(ss >> arg))
+			    throw std::invalid_argument("Invalid input");
+        }
         for (int i = 1; i < argc; i += 1)
             vec.push_back(std::atoi(argv[i]));
         printCont(vec);
