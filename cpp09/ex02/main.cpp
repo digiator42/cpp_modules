@@ -51,31 +51,42 @@ int main(int argc, char **argv)
         }
         for (int i = 1; i < argc; i += 1)
             vec.push_back(std::atoi(argv[i]));
-        // printCont(vec);
+
+        #ifdef PRINT    
+            printCont(vec);
+        #endif
+
+        std::vector<unsigned int> uVector(vec.begin(), vec.end());
+        std::list<unsigned int> notSortedList(vec.begin(), vec.end());
+
+        std::clock_t start = std::clock();
+        std::vector<unsigned int> sortedVec =  pmm.mergeVec(uVector);
+        timeElapsed(start, argc-1, true);
+        std::cout <<  std::endl;
+
+        #ifdef PRINT  
+            printCont(sortedVec);
+        #endif
+
+        std::cout << "\n--------\n";
+
+        start = std::clock();
+
+        std::list<unsigned int> sortedList =  pmm.mergeVec(notSortedList);
+        timeElapsed(start, argc-1, false);
+
+        #ifdef PRINT  
+            printCont(sortedList);
+        #endif
+
+        std::cout <<  std::endl;
+        std::cout << "vec " << (isSorted(sortedVec) ? "YES" : "NO") << std::endl;
+        std::cout << "list " << (isSorted(sortedList) ? "YES" : "NO") << std::endl;
     }
     catch (std::exception& e) {
         std::cerr << e.what() << '\n';
         return EXIT_FAILURE;
     }
-    std::vector<unsigned int> uVector(vec.begin(), vec.end());
-    std::list<unsigned int> notSortedList(vec.begin(), vec.end());
-
-    std::clock_t start = std::clock();
-    std::vector<unsigned int> sortedVec =  pmm.mergeVec(uVector);
-    timeElapsed(start, argc-1, true);
-    std::cout <<  std::endl;
-    // printCont(sortedVec);
-
-    std::cout << "\n--------\n";
-
-    start = std::clock();
-
-    std::list<unsigned int> sortedList =  pmm.mergeVec(notSortedList);
-    timeElapsed(start, argc-1, false);
-    // printCont(sortedList);
-    std::cout <<  std::endl;
-    std::cout << "vec " << (isSorted(sortedVec) ? "YES" : "NO") << std::endl;
-    std::cout << "list " << (isSorted(sortedList) ? "YES" : "NO") << std::endl;
 
 	return EXIT_SUCCESS;
 }
