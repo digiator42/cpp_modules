@@ -6,7 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <set>
+#include <list>
 
 
 
@@ -19,7 +19,7 @@ class PmergeMe {
         ~PmergeMe(void);
 
         std::vector<unsigned int> mergeVec(std::vector<unsigned int>& vec);
-        std::set<unsigned int> mergeVec(std::set<unsigned int>& set);
+        std::list<unsigned int> mergeVec(std::list<unsigned int>& list);
 
 };
 

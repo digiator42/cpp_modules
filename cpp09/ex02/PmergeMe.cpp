@@ -46,27 +46,27 @@ static std::vector<unsigned int> sortVec(std::vector<unsigned int>& left, std::v
 }
 
 
-static std::set<unsigned int> sortSet(std::set<unsigned int>& left, std::set<unsigned int>& right) {
+static std::list<unsigned int> sortSet(std::list<unsigned int>& left, std::list<unsigned int>& right) {
     
-    std::set<unsigned int> result;
+    std::list<unsigned int> result;
 
     while (!left.empty() && !right.empty()) {
         if (*left.begin() <= *right.begin()) {
-            result.insert(*left.begin());
+            result.push_back(*left.begin());
             left.erase(left.begin());
             continue;
         }
-        result.insert(*right.begin());
+        result.push_back(*right.begin());
         right.erase(right.begin());
     }
 
     while (!left.empty()) {
-        result.insert(*left.begin());
+        result.push_back(*left.begin());
         left.erase(left.begin());
     }
 
     while (!right.empty()) {
-        result.insert(*right.begin());
+        result.push_back(*right.begin());
         right.erase(right.begin());
     }
 
@@ -89,22 +89,22 @@ std::vector<unsigned int> PmergeMe::mergeVec(std::vector<unsigned int>& vec) {
     return sortVec(left, right);
 }
 
-std::set<unsigned int> PmergeMe::mergeVec(std::set<unsigned int>& set) {
+std::list<unsigned int> PmergeMe::mergeVec(std::list<unsigned int>& list) {
 
-    if (set.size() <= 1) {
-        return set;
+    if (list.size() <= 1) {
+        return list;
     }
 
-    int mid = set.size() / 2;
-    std::set<unsigned int>::iterator sit = set.begin();
+    int mid = list.size() / 2;
+    std::list<unsigned int>::iterator lit = list.begin();
 
-    std::set<unsigned int> left;
-    std::set<unsigned int> right;
+    std::list<unsigned int> left;
+    std::list<unsigned int> right;
 
     for (int i = 0; i < mid; i++)
-        left.insert(*sit++);
-    for (int i = mid; i < (int)set.size(); i++)
-        right.insert(*sit++);
+        left.push_back(*lit++);
+    for (int i = mid; i < (int)list.size(); i++)
+        right.push_back(*lit++);
     
     left = mergeVec(left);
     right = mergeVec(right);
