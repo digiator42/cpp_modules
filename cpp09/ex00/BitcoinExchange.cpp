@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <vector>
 
 BitcoinExchange::BitcoinExchange() {}
 
@@ -24,6 +25,17 @@ BitcoinExchange::BitcoinExchange(char *filePath) {
 }
 
 BitcoinExchange::~BitcoinExchange() {}
+
+std::vector<std::string> split(std::string str, char sep) {
+    std::stringstream ss(str);
+    std::string value;
+    std::vector<std::string> vec;
+
+    while (std::getline(ss, value, sep))
+        if (!value.empty())
+            vec.push_back(value);
+    return vec;
+}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
     *this = copy;
@@ -52,6 +64,7 @@ void    BitcoinExchange::displayData() {
     char            buffer[1024];
     std::string     dateString;
     std::string     digitString;
+    std::vector<std::string> vec;
     struct          tm time;
 
     std::fstream fin(this->filePath);
@@ -63,62 +76,53 @@ void    BitcoinExchange::displayData() {
     while(fin.getline(buffer, 1024))
     {
         std::string buff(buffer);
-        std::string tmp(buffer);
-        // if (tmp.find("|") != std::string::npos)
-        //     if (tmp.substr(tmp.find("|") + 1, tmp.length() - 1).find("|") != std::string::npos) {
-        //         std::cout << "Bad input: " << tmp << std::endl;
-        //         continue;
-        //     }
+        if (buff.find("|") != std::string::npos)
+            if (buff.substr(buff.find("|") + 1, buff.length() - 1).find("|") != std::string::npos) {
+                std::cerr << "Bad DOUBLE input: " << buff << std::endl;
+                continue;
+        }
+        if (std::isspace(buff[0]) || std::isspace(buff[buff.length() - 1])) {
+                std::cerr << "Bad SPACE input: " << buff << std::endl;
+                continue;
+        }                
         if (buff.find("|") == std::string::npos) {
-            std::cout << "Bad input: " << buff << std::endl;
+            std::cerr << "Bad NO PIPE input: " << buff << std::endl;
             continue;
         }
         else if (buff.find_first_not_of("0123456789-| ") != std::string::npos) {
-            std::cout << "Bad input: " << buff << std::endl;
+            std::cerr << "Bad input: " << buff << std::endl;
             continue;
         }
         else {
-            char *Date      = strtok(buffer, "|");
-            dateString      = Date;
+            vec = split(buffer, '|');
 
-            char *charDigit = strtok(NULL, "|");
-            digitString     = charDigit;
-
-            if (charDigit == NULL || Date == NULL) {
-                std::cout << "Error: Bad Input => " << Date <<std::endl;
+            if (vec.size() != 2) {
+                std::cerr << "Bad vector input: " << buff << std::endl;
                 continue;
             }
         }
-            std::string         Date;
             float               Digit;
-
-            std::stringstream   ss_date;
-            std::stringstream   ss_digit;
-
-            ss_date << dateString;
-            ss_date >> Date;
-
-            ss_digit << digitString;
+            std::stringstream   ss_digit(vec.at(1));
             ss_digit >> Digit;
 
-        if (!strptime(&Date[0], "%Y-%m-%d", &time)) {
-            std::cout << "Error: bad input => " << Date <<std::endl;
+        if (!strptime(vec.at(0).c_str(), "%Y-%m-%d", &time)) {
+            std::cerr << "Error: bad strptime input => " << vec.at(0) <<std::endl;
             continue;
         }
         if (std::signbit(Digit) == true) {
-                std::cout << "Error: negative num " << std::endl;
+                std::cerr << "Error: negative num " << std::endl;
                 continue;
         }
         if (Digit > 1000) {
-                std::cout << "over max num" << std::endl;
+                std::cerr << "Error: over max num " << vec.at(0) << std::endl;
                 continue;
         }
 
         std::map <std::string, float>::iterator itr;
 
-        itr = this->map.find(Date);
+        itr = this->map.find(vec.at(0));
         if (itr == this->map.end()) {
-            itr = this->map.lower_bound(Date);
+            itr = this->map.lower_bound(vec.at(0));
 
             if (itr != map.begin())
                 itr--;
@@ -126,7 +130,7 @@ void    BitcoinExchange::displayData() {
 
         float output = (*itr).second * Digit;
 
-        std::cout << Date << " => " << Digit << " = " << output << std::endl;
+        std::cout << vec.at(0).c_str() << " => " << Digit << " = " << output << std::endl;
     }
 
 }
