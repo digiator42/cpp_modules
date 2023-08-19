@@ -7,8 +7,8 @@ int main(int argc, char *argv[])
         std::cerr << "Error: could not open file." << std::endl;
         exit(1);
     }
-    BitcoinExchange setup = BitcoinExchange(argv[1]);
     try {
+        BitcoinExchange setup = BitcoinExchange(argv[1]);
         setup.displayData();
         // setup.printMap();
     }

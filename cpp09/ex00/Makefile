@@ -4,7 +4,7 @@ SRCS = main.cpp BitcoinExchange.cpp
 
 CXX = c++
 
-CXXFLAGS  = -std=c++98 -Wall -Wextra -Werror -g3 #-fsanitize=address #-D DEBUG=1
+CXXFLAGS  = -std=c++98 -Wall -Wextra -Werror -g3 -fsanitize=address #-D DEBUG=1
 
 OBJS = $(SRCS:.cpp=.o)
 

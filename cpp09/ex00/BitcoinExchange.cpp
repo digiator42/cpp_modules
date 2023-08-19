@@ -1,32 +1,7 @@
 #include "BitcoinExchange.hpp"
 #include <vector>
 
-BitcoinExchange::BitcoinExchange() {}
-
-BitcoinExchange::BitcoinExchange(char *filePath) {
-    char        buffer[1024] = {0};
-
-    if (strcmp(filePath, "input.txt") != 0) {
-        std::cerr << "Incorrect input file" << std::endl;
-        exit(1);
-    }
-    this->filePath = filePath;
-
-    std::ifstream fin("data.csv");
-    if (!fin) {
-		throw exception("File cannot be opened: data.csv");
-    }
-
-    while(fin.getline(buffer, 1024)) {
-        const char *dateDic = strtok(buffer, ",");
-        const char *exchange_rate = strtok(NULL, ",");
-		this->map.insert(std::make_pair(std::string(dateDic), std::atof(exchange_rate)));
-    }
-}
-
-BitcoinExchange::~BitcoinExchange() {}
-
-std::vector<std::string> split(std::string str, char sep) {
+static std::vector<std::string> split(std::string str, char sep) {
     std::stringstream ss(str);
     std::string value;
     std::vector<std::string> vec;
@@ -36,6 +11,41 @@ std::vector<std::string> split(std::string str, char sep) {
             vec.push_back(value);
     return vec;
 }
+
+BitcoinExchange::BitcoinExchange() {}
+
+BitcoinExchange::BitcoinExchange(char *filePath) {
+    char        buffer[1024] = {0};
+
+
+    std::ifstream finput(filePath);
+    if (!finput) {
+		throw exception("Error: could not open : " + std::string(filePath));
+    }
+    this->filePath = filePath;
+
+    std::ifstream fin("data.csv");
+    if (!fin) {
+		throw exception("File cannot be opened: data.csv");
+    }
+
+    if (!fin.getline(buffer, 1024))
+        throw exception("Data file is empty.");
+
+    while(fin.getline(buffer, 1024)) {
+        if (std::string(buffer).find_first_not_of("0123456789-,.") != std::string::npos)
+            throw exception("Wrong database.");
+        std::vector<std::string> vec;
+        vec = split(std::string(buffer), ',');
+        if (vec.size() != 2)
+            throw exception("Wrong database.");
+        std::cout << vec.at(0) << vec.at(1) << std::endl;    
+		this->map.insert(std::make_pair(vec.at(0), std::atof(vec.at(0).c_str())));
+    }
+}
+
+BitcoinExchange::~BitcoinExchange() {}
+
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
     *this = copy;
@@ -83,7 +93,6 @@ static bool isValidDate(const std::string& dateStr) {
     return true;
 }
 
-
 void    BitcoinExchange::displayData() {
     char            buffer[1024];
     std::string     dateString;
@@ -92,7 +101,8 @@ void    BitcoinExchange::displayData() {
     struct          tm time;
 
     std::fstream fin(this->filePath);
-    fin.getline(buffer, 1024);
+    if (!fin.getline(buffer, 1024)) 
+        throw exception("Input file is empty.");
 
     if (strcmp(buffer, "date | value") != 0)
 		throw exception("Invalid header: " + std::string(buffer));
