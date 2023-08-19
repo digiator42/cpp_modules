@@ -15,7 +15,8 @@ static bool isSorted(Container &con) {
     typename Container::iterator itr2;
     for (itr = con.begin(); itr != con.end(); ++itr)
     {
-        for (itr2 = std::next(itr); itr2 != con.end(); itr2++) // not in cpp 98
+       typename Container::iterator nextItr = itr;
+        for (itr2 = ++nextItr; itr2 != con.end(); itr2++)
             if (*itr > *itr2)
 		        return false;
     }
