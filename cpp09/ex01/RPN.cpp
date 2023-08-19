@@ -43,7 +43,7 @@ void    RPN::execute(char *expression) {
                 stack.push(firstInt / secondInt);
 
         }
-        else if (isdigit(input[0])) {
+        else if (isdigit(input[0]) && input.find_first_not_of("0123456789") == std::string::npos) {
             digit = atoi(input.c_str());
             stack.push(digit);
         }
@@ -51,7 +51,6 @@ void    RPN::execute(char *expression) {
             std::cerr << "Error: invalid int " << std::endl;
             exit(1);
         }
-        ss >> std::ws;
     }
     std::cout << stack.top() << std::endl;
 }
