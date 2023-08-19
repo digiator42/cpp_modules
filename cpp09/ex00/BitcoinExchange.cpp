@@ -39,7 +39,7 @@ BitcoinExchange::BitcoinExchange(char *filePath) {
         vec = split(std::string(buffer), ',');
         if (vec.size() != 2)
             throw exception("Wrong database.");
-		this->map.insert(std::make_pair(vec.at(0), std::atof(vec.at(0).c_str())));
+		this->map.insert(std::make_pair(vec.at(0), std::atof(vec.at(1).c_str())));
     }
 }
 
