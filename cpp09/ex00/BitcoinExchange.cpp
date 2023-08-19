@@ -59,6 +59,28 @@ void    BitcoinExchange::printMap(void) {
    std::cout << "Size -->: " << map.size() << std::endl;
 }
 
+static bool isValidDate(const std::string& dateStr) {
+    std::istringstream dateStream(dateStr);
+    int year, month, day;
+    char dash1, dash2;
+
+    dateStream >> year >> dash1 >> month >> dash2 >> day;
+
+    if (dateStream.fail() || dash1 != '-' || dash2 != '-') {
+        return false;
+    }
+
+    if (month < 1 || month > 12 || day < 1 || day > 31) {
+        return false;
+    }
+
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
+        return false;
+    }
+
+    return true;
+}
+
 
 void    BitcoinExchange::displayData() {
     char            buffer[1024];
@@ -100,10 +122,15 @@ void    BitcoinExchange::displayData() {
                 std::cerr << "Bad vector input: " << buff << std::endl;
                 continue;
             }
+            if (!isValidDate(vec.at(0))) {
+                std::cerr << "invalid date format: " << buff << std::endl;
+                continue;
+            }
+
         }
-            float               Digit;
-            std::stringstream   ss_digit(vec.at(1));
-            ss_digit >> Digit;
+        float               Digit;
+        std::stringstream   ss_digit(vec.at(1));
+        ss_digit >> Digit;
 
         if (!strptime(vec.at(0).c_str(), "%Y-%m-%d", &time)) {
             std::cerr << "Error: bad strptime input => " << vec.at(0) <<std::endl;
