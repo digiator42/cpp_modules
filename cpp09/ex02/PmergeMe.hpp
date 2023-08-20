@@ -20,7 +20,6 @@ class PmergeMe {
 
         std::vector<unsigned int> mergeVec(std::vector<unsigned int>& vec);
         std::list<unsigned int> mergeVec(std::list<unsigned int>& list);
-
 };
 
 #endif

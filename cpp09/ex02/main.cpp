@@ -42,23 +42,24 @@ int main(int argc, char **argv)
     std::string arg;
 
     try {
-        for (int i = 1; i < argc; i += 1)
+        for (int i = 1; i < argc; i++)
         {
             std::istringstream ss(argv[i]);
             if (std::string(argv[i]).find_first_not_of("0123456789 ") != std::string::npos)
 			    throw std::invalid_argument("Invalid input");
-            if (!(ss >> arg))
+            if (!(ss >> arg)) // empty inputs
 			    throw std::invalid_argument("Invalid input");
+            vec.push_back(std::atoi(arg.c_str()));
+            while(ss >> arg)
+                vec.push_back(std::atoi(arg.c_str()));
         }
-        for (int i = 1; i < argc; i += 1)
-            vec.push_back(std::atoi(argv[i]));
 
         #ifdef PRINT    
             printCont(vec);
         #endif
 
         std::vector<unsigned int> uVector(vec.begin(), vec.end());
-        std::list<unsigned int> notSortedList(vec.begin(), vec.end());
+        std::list<unsigned int> unSortedList(vec.begin(), vec.end());
 
         std::clock_t start = std::clock();
         std::vector<unsigned int> sortedVec =  pmm.mergeVec(uVector);
@@ -73,7 +74,7 @@ int main(int argc, char **argv)
 
         start = std::clock();
 
-        std::list<unsigned int> sortedList =  pmm.mergeVec(notSortedList);
+        std::list<unsigned int> sortedList =  pmm.mergeVec(unSortedList);
         timeElapsed(start, argc-1, false);
 
         #ifdef PRINT  
