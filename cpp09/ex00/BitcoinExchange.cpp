@@ -72,13 +72,13 @@ static bool isValidDate(const std::string& dateStr) {
     std::istringstream dateStream(dateStr);
     int year, month, day;
     char dash1, dash2;
+    std::string invalid = "";
 
-    dateStream >> year >> dash1 >> month >> dash2 >> day;
-
-    if (dateStream.fail() || dash1 != '-' || dash2 != '-') {
+    dateStream >> year >> dash1 >> month >> dash2 >> day >> invalid;
+    
+    if (!invalid.empty() || dash1 != '-' || dash2 != '-') {
         return false;
     }
-
     if (month < 1 || month > 12 || day < 1 || day > 31) {
         return false;
     }
@@ -147,12 +147,12 @@ void    BitcoinExchange::displayData() {
             std::cerr << "Error: bad strptime input => " << vec.at(0) <<std::endl;
             continue;
         }
-        if (std::signbit(Digit) == true) {
-                std::cerr << "Error: negative num " << std::endl;
+        if (Digit < 0) {
+                std::cerr << "Error: negative num " << vec.at(1) << std::endl;
                 continue;
         }
         if (Digit > 1000) {
-                std::cerr << "Error: over max num " << vec.at(0) << std::endl;
+                std::cerr << "Error: over max num " << vec.at(1) << std::endl;
                 continue;
         }
 
