@@ -122,23 +122,25 @@ void    BitcoinExchange::displayData() {
             std::cerr << "Bad NO PIPE input: " << buff << std::endl;
             continue;
         }
-        else if (buff.find_first_not_of("0123456789-| ") != std::string::npos) {
+        if (buff.find_first_not_of("0123456789-| ") != std::string::npos) {
             std::cerr << "Bad input: " << buff << std::endl;
             continue;
         }
-        else {
-            vec = split(buffer, '|');
-
-            if (vec.size() != 2) {
-                std::cerr << "Bad vector input: " << buff << std::endl;
-                continue;
-            }
-            if (!isValidDate(vec.at(0))) {
-                std::cerr << "invalid date format: " << buff << std::endl;
-                continue;
-            }
-
+        if (buff.length() >= 13 && buff.substr(10, 3).compare(" | ") != 0) {
+            std::cerr << "Bad INDENT input: " << buff << std::endl;
+            continue;
         }
+        vec = split(buffer, '|');
+
+        if (vec.size() != 2) {
+            std::cerr << "Bad vector input: " << buff << std::endl;
+            continue;
+        }
+        if (!isValidDate(vec.at(0))) {
+            std::cerr << "invalid date format: " << buff << std::endl;
+            continue;
+        }
+
         float               Digit;
         std::stringstream   ss_digit(vec.at(1));
         ss_digit >> Digit;
@@ -161,13 +163,11 @@ void    BitcoinExchange::displayData() {
         itr = this->map.find(vec.at(0));
         if (itr == this->map.end()) {
             itr = this->map.lower_bound(vec.at(0));
-
             if (itr != map.begin())
                 itr--;
         }
 
         float output = (*itr).second * Digit;
-
         std::cout << vec.at(0).c_str() << " => " << Digit << " = " << output << std::endl;
     }
 
