@@ -122,7 +122,7 @@ void    BitcoinExchange::displayData() {
             std::cerr << "Bad NO PIPE input: " << buff << std::endl;
             continue;
         }
-        if (buff.find_first_not_of("0123456789-| ") != std::string::npos) {
+        if (buff.find_first_not_of("0123456789-| .") != std::string::npos) {
             std::cerr << "Bad input: " << buff << std::endl;
             continue;
         }

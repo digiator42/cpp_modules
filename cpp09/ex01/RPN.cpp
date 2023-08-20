@@ -47,10 +47,10 @@ void    RPN::execute(char *expression) {
             digit = atoi(input.c_str());
             stack.push(digit);
         }
-        else {
-            std::cerr << "Error: invalid int " << std::endl;
-            exit(1);
-        }
+        else
+            throw std::runtime_error("Error: invalid integer");
     }
+    if (stack.size() >= 2)
+        throw std::runtime_error("Error: invalid expression");
     std::cout << stack.top() << std::endl;
 }

@@ -9,20 +9,6 @@ static void printCont(Container &con) {
     std::cout << std::endl;
 }
 
-template<typename Container>
-static bool isSorted(Container &con) {
-    typename Container::iterator itr;
-    typename Container::iterator itr2;
-    for (itr = con.begin(); itr != con.end(); ++itr)
-    {
-       typename Container::iterator nextItr = itr;
-        for (itr2 = ++nextItr; itr2 != con.end(); itr2++)
-            if (*itr > *itr2)
-		        return false;
-    }
-    return true;
-}
-
 static void timeElapsed(std::clock_t start, int count, bool vec) { 
 
     double duration = static_cast<double>(std::clock() - start) / CLOCKS_PER_SEC * 1000;
@@ -47,43 +33,28 @@ int main(int argc, char **argv)
             std::istringstream ss(argv[i]);
             if (std::string(argv[i]).find_first_not_of("0123456789 ") != std::string::npos)
 			    throw std::invalid_argument("Invalid input");
-            if (!(ss >> arg)) // empty inputs
+            if (!(ss >> arg))
 			    throw std::invalid_argument("Invalid input");
             vec.push_back(std::atoi(arg.c_str()));
             while(ss >> arg)
                 vec.push_back(std::atoi(arg.c_str()));
         }
-
-        #ifdef PRINT    
-            printCont(vec);
-        #endif
+        std::cout << "Before: ";
+        printCont(vec);
 
         std::vector<unsigned int> uVector(vec.begin(), vec.end());
         std::list<unsigned int> unSortedList(vec.begin(), vec.end());
 
         std::clock_t start = std::clock();
         std::vector<unsigned int> sortedVec =  pmm.mergeVec(uVector);
+        std::cout << "After:  ";
+        printCont(sortedVec);
         timeElapsed(start, argc-1, true);
-        std::cout <<  std::endl;
-
-        #ifdef PRINT  
-            printCont(sortedVec);
-        #endif
-
-        std::cout << "\n--------\n";
 
         start = std::clock();
 
         std::list<unsigned int> sortedList =  pmm.mergeVec(unSortedList);
         timeElapsed(start, argc-1, false);
-
-        #ifdef PRINT  
-            printCont(sortedList);
-        #endif
-
-        std::cout <<  std::endl;
-        std::cout << "vec " << (isSorted(sortedVec) ? "YES" : "NO") << std::endl;
-        std::cout << "list " << (isSorted(sortedList) ? "YES" : "NO") << std::endl;
     }
     catch (std::exception& e) {
         std::cerr << e.what() << '\n';
