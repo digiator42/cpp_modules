@@ -46,9 +46,7 @@ BitcoinExchange::BitcoinExchange(char *filePath) {
 BitcoinExchange::~BitcoinExchange() {}
 
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
-    *this = copy;
-}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) : map(copy.map), filePath(copy.filePath) {}
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange & other) {
 	if (this != &other) {
@@ -184,4 +182,8 @@ void    BitcoinExchange::displayData() {
     }
     if (!fin.getline(buffer, 1024) && !fin.eof())
         throw exception("Error: too long line.");
+}
+
+const char *BitcoinExchange::exception::what() const throw() {
+    return err_msg.c_str();
 }

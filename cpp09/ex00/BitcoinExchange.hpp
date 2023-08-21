@@ -40,9 +40,7 @@ public:
 		public:
 			~exception() throw() {}
 			exception(std::string msg) : err_msg(msg) {}
-			virtual const char *what() const throw() {
-				return err_msg.c_str();
-			}
+			virtual const char *what() const throw();
 	};
 };
 

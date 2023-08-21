@@ -52,7 +52,6 @@ int main(int argc, char **argv)
         timeElapsed(start, argc-1, true);
 
         start = std::clock();
-
         std::list<unsigned int> sortedList =  pmm.mergeVec(unSortedList);
         timeElapsed(start, argc-1, false);
     }

@@ -5,7 +5,7 @@ RPN::RPN() {}
 RPN::~RPN() {}
 
 RPN::RPN(const RPN &copy) {
-    *this = copy;
+    (void)copy;
 }
 
 RPN& RPN::operator=(const RPN & other) {
