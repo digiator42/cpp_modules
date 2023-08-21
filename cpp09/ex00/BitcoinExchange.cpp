@@ -107,7 +107,10 @@ void    BitcoinExchange::displayData() {
     std::vector<std::string> vec;
     struct          tm time;
 
-    std::fstream fin(this->filePath);
+    std::ifstream fin(this->filePath);
+    if (!fin) {
+        throw exception("Error: could not open : " + std::string(this->filePath));
+    }
     if (!fin.getline(buffer, 1024)) 
         throw exception("Error: Input file is empty.");
 
@@ -179,5 +182,6 @@ void    BitcoinExchange::displayData() {
         float output = (*itr).second * Digit;
         std::cout << vec.at(0).c_str() << " => " << Digit << " = " << output << std::endl;
     }
-
+    if (!fin.getline(buffer, 1024) && !fin.eof())
+        throw exception("Error: too long line.");
 }

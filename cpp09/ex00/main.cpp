@@ -2,18 +2,19 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        std::cerr << "Error: could not open file." << std::endl;
-        exit(1);
-    }
     try {
-        BitcoinExchange setup = BitcoinExchange(argv[1]);
-        setup.displayData();
-        // setup.printMap();
+        if (argc != 2) {
+            throw std::invalid_argument("Error: Invalid input");
+        }
+        BitcoinExchange btc = BitcoinExchange(argv[1]);
+        btc.displayData();
+        #ifdef PRINT
+        btc.printMap();
+        #endif
     }
     catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
+        return EXIT_FAILURE;
     }
-    
+    return EXIT_SUCCESS;
 }
