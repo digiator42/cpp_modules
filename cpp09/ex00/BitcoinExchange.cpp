@@ -142,6 +142,11 @@ void    BitcoinExchange::displayData() {
             continue;
         }
 
+        if (!strptime(vec.at(0).c_str(), "%Y-%m-%d", &time)) {
+            std::cerr << "Error: bad date input => " << vec.at(0) <<std::endl;
+            continue;
+        }
+
         float               Digit;
         std::stringstream   ss_digit(vec.at(1));
         ss_digit >> Digit;
@@ -165,10 +170,6 @@ void    BitcoinExchange::displayData() {
             continue;
         }
 
-        if (!strptime(vec.at(0).c_str(), "%Y-%m-%d", &time)) {
-            std::cerr << "Error: bad strptime input => " << vec.at(0) <<std::endl;
-            continue;
-        }
 
         std::map <std::string, float>::iterator itr;
 
