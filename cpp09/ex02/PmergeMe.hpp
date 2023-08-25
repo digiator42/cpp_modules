@@ -13,10 +13,10 @@
 class PmergeMe {
     public:
     	std::vector<unsigned int> vec;
-        PmergeMe(void);
+        PmergeMe();
         PmergeMe(const PmergeMe& to_copy);
         PmergeMe &operator=(const PmergeMe& to_copy);
-        ~PmergeMe(void);
+        ~PmergeMe();
 
         std::vector<unsigned int> mergeVec(std::vector<unsigned int>& vec);
         std::list<unsigned int> mergeVec(std::list<unsigned int>& list);
