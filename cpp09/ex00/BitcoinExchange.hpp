@@ -15,7 +15,6 @@
 #include <iomanip>
 #include <cmath>
 #include <cstdlib>
-#include <sstream>
 
 
 class BitcoinExchange
